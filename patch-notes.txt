@@ -1,0 +1,7 @@
+Made a Socket prefab and a Socket script
+
+Made a MainController to store the master list of ship piece types
+
+renamed ShipManager to Ship
+
+Ship now stores a grid of ShipPiece (currently auto-initialized to random things just for testing)

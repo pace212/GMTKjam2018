@@ -6,8 +6,9 @@ public enum ShipPieceType { helm, sail, rudder, deck, hull, leftCannon, rightCan
 
 public class ShipPiece : MonoBehaviour {
 	public ShipPieceType m_shipPieceType;
-
-	// connectors are in order: North, South, East, West
+    private static System.Array shipPieceTypeArray = System.Enum.GetValues(typeof(ShipPieceType));
+    
+    // connectors are in order: North, South, East, West
 	public bool[] connectors = new bool[4];
 
 	void Start()
@@ -44,8 +45,38 @@ public class ShipPiece : MonoBehaviour {
 		}
 	}
 
-	public void ShowPotentialLocations(Ship aShip)
-	{
+    // constructor: a new specific type of ship piece
+    public ShipPiece(ShipPieceType type) {
+        m_shipPieceType = type;
+    }
 
-	}
+    // constructor: a new random type of ship piece
+    // public ShipPiece() {
+    //     m_shipPieceType = (ShipPieceType)shipPieceTypeArray.GetValue(Random.Range(0, shipPieceTypeArray.GetLength(0)));
+    // }
+
+    bool HasNorthConnector() {
+        return connectors[0];
+    }
+
+    bool HasSouthConnector() {
+        return connectors[1];
+    }
+
+    bool HasEastConnector() {
+        return connectors[2];
+    }
+
+    bool HasWestConnector() {
+        return connectors[3];
+    }
+
+	// public void ShowPotentialLocations(Ship aShip)
+	// {
+
+	// }
+    // so, the last thing I was working on was a ship manager script that will hold the configuration of the ship in a 2d array
+    
+    // after getting that working, I was going to get the menu on the right side of the screen to work as slots that hold new ship pieces that the player can drag and drop into the scene
+            
 }
