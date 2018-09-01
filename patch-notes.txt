@@ -1,4 +1,2 @@
-rename ShipPiece to Piece for easier autocomplete
-
 next: drop
 next next: only allow valid piece connections
