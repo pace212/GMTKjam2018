@@ -1,7 +1,4 @@
-Made a Socket prefab and a Socket script
+rename ShipPiece to Piece for easier autocomplete
 
-Made a MainController to store the master list of ship piece types
-
-renamed ShipManager to Ship
-
-Ship now stores a grid of ShipPiece (currently auto-initialized to random things just for testing)
+next: drop
+next next: only allow valid piece connections

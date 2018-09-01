@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainController : MonoBehaviour {
 
-	public GameObject[] shipPiecePrefabs;
+	public GameObject[] piecePrefabs;
     public Ship playerShip;
 
 	// Use this for initialization
@@ -13,13 +13,13 @@ public class MainController : MonoBehaviour {
         playerShip = playerShipObj.GetComponent<Ship>();
 	}
 
-	public GameObject ShipPiecePrefab(int index) {
-        return this.shipPiecePrefabs[index];
+	public GameObject PiecePrefab(int index) {
+        return this.piecePrefabs[index];
 	}
 
-	public GameObject RandomShipPiecePrefab() {
-        int index = Mathf.FloorToInt(Random.Range(0, shipPiecePrefabs.Length));
-        return this.shipPiecePrefabs[index];
+	public GameObject RandomPiecePrefab() {
+        int index = Mathf.FloorToInt(Random.Range(0, piecePrefabs.Length));
+        return this.piecePrefabs[index];
 	}
 
 	// Update is called once per frame

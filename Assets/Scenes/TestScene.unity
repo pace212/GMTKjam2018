@@ -717,8 +717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c71aaaf2b1d2c479ee33de9d2220cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipPieceWidthInUnits: 0.7
-  shipPieceHeightInUnits: 0.7
+  pieceWidthInUnits: 0.7
+  pieceHeightInUnits: 0.7
 --- !u!1 &1556893091
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00278608069ea046bbd382d2cd43d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipPiecePrefabs:
+  piecePrefabs:
   - {fileID: 1246096287067676, guid: 846485733915fd848a41458c4826d773, type: 2}
   - {fileID: 1246096287067676, guid: 7127f081ab209b3419cc6af38439778b, type: 2}
   - {fileID: 1246096287067676, guid: bdde68b4dccae4d448dcccfbc36bcebb, type: 2}
@@ -878,8 +878,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c71aaaf2b1d2c479ee33de9d2220cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipPieceWidthInUnits: 0.1
-  shipPieceHeightInUnits: 0.1
+  pieceWidthInUnits: 0
+  pieceHeightInUnits: 0
 --- !u!1001 &1676761616
 Prefab:
   m_ObjectHideFlags: 0
@@ -923,30 +923,6 @@ Prefab:
       propertyPath: m_Name
       value: Socket1
       objectReference: {fileID: 0}
-    - target: {fileID: 114105439508224042, guid: 31656e8b52cdd4e4a8bd05a9907066ea,
-        type: 2}
-      propertyPath: shipPiecePrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1246096287067676, guid: 846485733915fd848a41458c4826d773,
-        type: 2}
-    - target: {fileID: 114105439508224042, guid: 31656e8b52cdd4e4a8bd05a9907066ea,
-        type: 2}
-      propertyPath: shipPiecePrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1246096287067676, guid: 7127f081ab209b3419cc6af38439778b,
-        type: 2}
-    - target: {fileID: 114105439508224042, guid: 31656e8b52cdd4e4a8bd05a9907066ea,
-        type: 2}
-      propertyPath: shipPiecePrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1246096287067676, guid: 8a0bda8bd3693cb4ebd6d9fe8b2227a7,
-        type: 2}
-    - target: {fileID: 114105439508224042, guid: 31656e8b52cdd4e4a8bd05a9907066ea,
-        type: 2}
-      propertyPath: shipPiecePrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 1246096287067676, guid: bdde68b4dccae4d448dcccfbc36bcebb,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31656e8b52cdd4e4a8bd05a9907066ea, type: 2}
   m_IsPrefabAsset: 0
