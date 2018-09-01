@@ -8,10 +8,12 @@ public class Ship : MonoBehaviour {
     public GameObject helmPrefab;
     public GameObject highlightPrefab;
 	public static Ship instance;
-	Piece[,] m_pieces = new Piece[5, 3]; // (0,0) is the bottom-leftmost possible ship piece grid coordinate. @todo extend
-    GameObject[,] m_highlights = new GameObject[5, 3];
+    public static readonly int maxGridWidth = 5;
+    public static readonly int maxGridHeight = 3;
     private Vector2Int gridCenter = new Vector2Int(2, 1);
     private Vector2Int helmSlot = new Vector2Int(2, 1);
+	Piece[,] m_pieces = new Piece[maxGridWidth, maxGridHeight]; // (0,0) is the bottom-leftmost possible ship piece grid coordinate. @todo extend
+    GameObject[,] m_highlights = new GameObject[maxGridWidth, maxGridHeight];
     private Vector2 bottomLeftCorner;
     public float pieceWidthInUnits;
     public float pieceHeightInUnits;
@@ -50,8 +52,8 @@ public class Ship : MonoBehaviour {
         MakePiecePartOfMe(helmPieceObj.GetComponent<Piece>(), helmSlot);
     
         /* uncomment to fill the ship up with random pieces for testing
-        for(int i = 0; i < MaxGridWidth(); i++) {
-            for(int j = 0; j < MaxGridHeight(); j++) {
+        for(int i = 0; i < maxGridWidth; i++) {
+            for(int j = 0; j < maxGridHeight; j++) {
                 if(! (i == helmSlot.x && j == helmSlot.y)) { // don't randomize the helm
                     GameObject piecePrefab = main.RandomPiecePrefab();
                     Vector3 relativePosition = PiecePosition(i,j) + gameObject.transform.position;
@@ -86,7 +88,7 @@ public class Ship : MonoBehaviour {
     public bool ReceivePieceFromMouse(Piece piece)
     {
         Vector2Int slot = GridSlot(piece.transform.position);
-        if(slot.x >= 0 && slot.y >= 0 && slot.x < MaxGridWidth() && slot.y < MaxGridHeight()
+        if(slot.x >= 0 && slot.y >= 0 && slot.x < maxGridWidth && slot.y < maxGridHeight
            && piece.IsValidConnectionSlot(this, slot)) {
             MakePiecePartOfMe(piece, slot);
             piece.transform.SetParent(this.transform);
@@ -103,6 +105,15 @@ public class Ship : MonoBehaviour {
             piece.socket.m_piece = null;
             piece.socket = null;
         }
+        piece.isConnectedToHelm = true;
+    }
+
+    private void MakePieceNotPartOfMe(int gridx, int gridy) {
+        Piece piece = GetPieceAt(gridx, gridy);
+        m_pieces[gridx, gridy] = null;
+        piece.DisableCollision();
+        piece.isConnectedToHelm = false;
+        piece.BreakOff();
     }
 
     // Note that a grid slot is currently being dragged from
@@ -126,8 +137,8 @@ public class Ship : MonoBehaviour {
     }
     
     public void UnhighlightAllSlots() {
-        for(int i = 0; i < MaxGridWidth(); i++) {
-            for(int j = 0; j < MaxGridHeight(); j++) {
+        for(int i = 0; i < maxGridWidth; i++) {
+            for(int j = 0; j < maxGridHeight; j++) {
                 GameObject highlight = m_highlights[i,j];
                 if(highlight != null) {
                     GameObject.Destroy(highlight); // it would be more efficient to set up a whole matrix of these, then activate and deactivate them as needed, but hey, jam
@@ -135,23 +146,55 @@ public class Ship : MonoBehaviour {
             }
         }
     }
-    
-    public Piece GetPieceAt (Vector2Int slot) {
-        if(slot.x >= 0 && slot.y >= 0 && slot.x < m_pieces.GetLength(0) && slot.y < m_pieces.GetLength(1)) {
-            return m_pieces[slot.x, slot.y];
+
+    public Piece GetPieceAt (int gridx, int gridy) {
+        if(gridx >= 0 && gridy >= 0 && gridx < m_pieces.GetLength(0) && gridy < m_pieces.GetLength(1)) {
+            return m_pieces[gridx, gridy];
         } else {
             return null;
         }
+        
     }
-    
-    // my max width in grid slots
-    public int MaxGridWidth() {
-        return m_pieces.GetLength(0);
+    public Piece GetPieceAt (Vector2Int slot) {
+        return GetPieceAt(slot.x, slot.y);
     }
 
-    // max max height in grid slots
-    public int MaxGridHeight() {
-        return m_pieces.GetLength(1);
+    public void BreakOffAnythingNotConnectedToHelm() {
+        // mark everything as disconnected
+        for(int i = 0; i < maxGridWidth; i++) {
+            for(int j = 0; j < maxGridHeight; j++) {
+                Piece piece = GetPieceAt(i,j);
+                if(piece != null) {
+                    piece.isConnectedToHelm = false;
+                }
+            }
+        }
+        // starting with the helm, walk outwards, marking everything unconnected as connected
+        MarkAsConnectedToHelm(helmSlot);
+        for(int i = 0; i < maxGridWidth; i++) {
+            for(int j = 0; j < maxGridHeight; j++) {
+                Piece piece = GetPieceAt(i,j);
+                if(piece && ! piece.isConnectedToHelm) {
+                    MakePieceNotPartOfMe(i,j);
+                }
+            }
+        }
+    }
+
+    // recursive case: mark orthogonal neighbors as connected
+    private void MarkAsConnectedToHelm(Vector2Int gridSlot) {
+        Piece piece = GetPieceAt(gridSlot);
+        if(piece && !piece.isConnectedToHelm) { // avoid infinite recursion; only mark+recurse if you're not yet marked
+            piece.isConnectedToHelm = true;
+            Vector2Int northSlot = new Vector2Int(gridSlot.x, gridSlot.y+1);
+            MarkAsConnectedToHelm(northSlot);
+            Vector2Int southSlot = new Vector2Int(gridSlot.x, gridSlot.y-1);
+            MarkAsConnectedToHelm(southSlot);
+            Vector2Int eastSlot = new Vector2Int(gridSlot.x+1, gridSlot.y);
+            MarkAsConnectedToHelm(eastSlot);
+            Vector2Int westSlot = new Vector2Int(gridSlot.x-1, gridSlot.y);
+            MarkAsConnectedToHelm(westSlot);
+        }        
     }
     
     // my max width in units

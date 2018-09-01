@@ -15,6 +15,11 @@ public class Piece : MonoBehaviour {
     private Vector3 originalItemPosition;
     private MainController main;
     public Socket socket;
+    public bool isConnectedToHelm = false;
+    private bool isDriftingAway = false;
+    public float driftAwaySpeed = 1; // the speed at which broken-off ship parts drift down off the screen
+    private float driftAwayWobble = 0.5f; // how much back-and-forth wobble the ship parts wobble as they drift down off the screen
+    private Vector2 velocity = new Vector2(0,0);
     
     // constructor: a new specific type of ship piece
     public Piece(PieceType type) {
@@ -64,6 +69,11 @@ public class Piece : MonoBehaviour {
             Vector2 worldPos2D = new Vector2(worldPos.x, worldPos.y);
             //Debug.Log(Input.mousePosition + " " + worldPos + " " + worldPos2D);
             transform.position = worldPos2D;
+        } 
+        if(isDriftingAway) {
+            Vector2 velocity = new Vector2(Random.Range(-driftAwayWobble, driftAwayWobble), -driftAwaySpeed);
+            transform.position += (Vector3)velocity * Time.deltaTime;
+            transform.localScale *= 0.998f; // yeah, I know this should be dependent on Time.deltaTime, but nothing bad happens if it's not
         }
     }
 
@@ -81,13 +91,15 @@ public class Piece : MonoBehaviour {
 
     void OnMouseDown()
     {
-        isBeingDragged = true;
-        if(socket != null) {
-            socket.Unhighlight();
+        if(!isDriftingAway) {
+            isBeingDragged = true;
+            if(socket != null) {
+                socket.Unhighlight();
+            }
+            originalItemPosition = this.transform.position;
+            main.playerShip.ReserveGridSlot(originalItemPosition);
+            ShowPotentialLocations(main.playerShip);
         }
-        originalItemPosition = this.transform.position;
-        main.playerShip.ReserveGridSlot(originalItemPosition);
-        ShowPotentialLocations(main.playerShip);
     }
 
     void OnMouseUp()
@@ -111,6 +123,16 @@ public class Piece : MonoBehaviour {
         gameObject.tag = "Ship";
     }
 
+    public void DisableCollision() {
+        gameObject.tag = "Background";
+    }
+
+    // I break off of the ship
+    public void BreakOff() {
+        isDriftingAway = true;
+        isBeingDragged = false;
+    }        
+    
     bool HasNorthConnector() {
         return connectors[0];
     }
@@ -129,8 +151,8 @@ public class Piece : MonoBehaviour {
 
 	public void ShowPotentialLocations(Ship aShip)
 	{
-        for(int i = 0; i < aShip.MaxGridWidth(); i++) {
-            for(int j = 0; j < aShip.MaxGridHeight(); j++) {
+        for(int i = 0; i < Ship.maxGridWidth; i++) {
+            for(int j = 0; j < Ship.maxGridWidth; j++) {
                 Vector2Int slot = new Vector2Int(i,j);
                 if(IsValidConnectionSlot(aShip, slot)){
                     aShip.HighlightSlot(slot);

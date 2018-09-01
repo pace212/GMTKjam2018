@@ -1,3 +1,6 @@
-highlight sockets when you hover over them
-next: sound effects (currently they are all silent, but they will be ready for you, Chloe)
+ship pieces now break off if not connected to helm
 
+next:
+test: can you reposition pieces that are connected to the ship?
+sound effects (currently they are all silent, but they will be ready for you, Chloe)
+allow mouse to reposition ship pieces

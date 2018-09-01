@@ -98,6 +98,9 @@ MonoBehaviour:
   m_pieceType: 3
   connectors: 00000000
   isBeingDragged: 0
+  socket: {fileID: 0}
+  isConnectedToHelm: 0
+  driftAwaySpeed: 1
 --- !u!212 &212622920370042944
 SpriteRenderer:
   m_ObjectHideFlags: 1
