@@ -68,7 +68,14 @@ public class Ship : MonoBehaviour {
     // @return Did the piece successfully drop?
     public bool ReceivePieceFromMouse(Piece piece)
     {
-        return false; // stub
+        Vector2Int slot = GridSlot(piece.transform.position);
+        if(slot.x > 0 && slot.y > 0) {
+            m_pieces[slot.x, slot.y] = piece;
+            piece.transform.SetParent(this.transform);
+            piece.transform.position = gameObject.transform.position;
+            SnapToGridSlot(piece, slot);
+            return true; // @todo only allow valid piece connections
+        } else return false; // outside the max bounds of the ship
     }
 
     // Note that a grid slot is currently being dragged from
@@ -93,11 +100,15 @@ public class Ship : MonoBehaviour {
     public float MaxHeight() {
         return pieceHeightInUnits * m_pieces.GetLength(1);
     }
+
+    public Vector2 MaxShipSize() {
+        return new Vector2(MaxWidth(), MaxHeight());
+    }
     
     // returns which (x,y) grid slot, with origin at bottom left, is the best fit for worldPos, or (-1, -1) if worldPos is outside the max ship bounds
     public Vector2Int GridSlot(Vector2 worldPos) {
         Vector2 offset = worldPos - bottomLeftCorner;
-        //Debug.Log("offset = " + offset + " piecesize = " + pieceSize + " spriteSize = " + spriteSize);
+        Debug.Log("offset = " + offset + " pieceSize = " + pieceSize + " MaxShipSize = " + MaxShipSize());
         if (offset.x < 0 || offset.x > MaxWidth()
             || offset.y < 0 || offset.y > MaxHeight())
         {
@@ -111,14 +122,14 @@ public class Ship : MonoBehaviour {
         }
     }
 
-    // private void SnapToGridSlot(GameObject piece, Vector2Int slot)
-    // {
-    //     Vector2 offsetToOrigin = -1 * spriteSize / 2;
-    //     Vector2 pieceSizeOffset = pieceSize / 2;
-    //     Vector2 slotOffset = slot * pieceSize;
-    //     Vector2 offset = offsetToOrigin + slotOffset + pieceSizeOffset;
-    //     //Debug.Log("SnapToGridSlot: " + offsetToOrigin + " " + slotOffset + " " + pieceSizeOffset);
-    //     piece.transform.localPosition = ZeroZ(offset);
-    // }
+    private void SnapToGridSlot(Piece piece, Vector2Int slot)
+    {
+        Vector2 offsetToOrigin = -1 * MaxShipSize() / 2;
+        Vector2 pieceSizeOffset = pieceSize / 2;
+        Vector2 slotOffset = slot * pieceSize;
+        Vector2 offset = offsetToOrigin + slotOffset + pieceSizeOffset;
+        Debug.Log("SnapToGridSlot: " + slot + " " + offset + " " + transform.localScale + " " + offsetToOrigin + " " + slotOffset + " " + pieceSizeOffset + " ");
+        piece.transform.localPosition = offset / transform.localScale;
+    }
 
 }
