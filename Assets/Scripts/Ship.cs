@@ -109,7 +109,6 @@ public class Ship : MonoBehaviour {
             int resultY = (int)Math.Floor(floatyResult.y);
             return new Vector2Int(resultX, resultY);
         }
-        return new Vector2Int(-1,-1); // stub
     }
 
     // private void SnapToGridSlot(GameObject piece, Vector2Int slot)
