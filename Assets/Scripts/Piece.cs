@@ -14,6 +14,7 @@ public class Piece : MonoBehaviour {
     public bool isBeingDragged = false;
     private Vector3 originalItemPosition;
     private MainController main;
+    Collider2D boxCollider;
     
     // constructor: a new specific type of ship piece
     public Piece(PieceType type) {
@@ -24,6 +25,7 @@ public class Piece : MonoBehaviour {
 	{
         GameObject manager = GameObject.Find("GameManagers");
         main = manager.GetComponent<MainController>();
+        boxCollider = GetComponent<Collider2D>();
 		switch(m_pieceType)
 		{
 			case PieceType.helm:
@@ -86,6 +88,10 @@ public class Piece : MonoBehaviour {
         }
         main.playerShip.ReleaseGridSlot();
         main.playerShip.UnhighlightAllSlots();
+    }
+
+    public void EnableCollision() {
+        gameObject.tag = "Ship";
     }
 
     bool HasNorthConnector() {

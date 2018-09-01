@@ -47,16 +47,16 @@ public class Ship : MonoBehaviour {
         // initialize the helm
         Vector3 helmRelativePosition = PiecePosition(helmSlot) + gameObject.transform.position;
         GameObject helmPieceObj = Instantiate(helmPrefab, helmRelativePosition, Quaternion.identity, transform);
-        m_pieces[helmSlot.x,helmSlot.y] = helmPieceObj.GetComponent<Piece>();
-        
+        MakePiecePartOfMe(helmPieceObj.GetComponent<Piece>(), helmSlot);
+    
         /* uncomment to fill the ship up with random pieces for testing
         for(int i = 0; i < MaxGridWidth(); i++) {
             for(int j = 0; j < MaxGridHeight(); j++) {
-                if(! (i == gridCenter.x && j == gridCenter.y)) { // don't randomize the helm
+                if(! (i == helmSlot.x && j == helmSlot.y)) { // don't randomize the helm
                     GameObject piecePrefab = main.RandomPiecePrefab();
                     Vector3 relativePosition = PiecePosition(i,j) + gameObject.transform.position;
                     GameObject pieceObj = Instantiate(piecePrefab, relativePosition, Quaternion.identity, transform);
-                    m_pieces[i,j] = pieceObj.GetComponent<Piece>();
+                    MakePiecePartOfMe(pieceObj.GetComponent<Piece>(), new Vector2Int(i,j));
                 }
             }
         }
@@ -86,14 +86,19 @@ public class Ship : MonoBehaviour {
     public bool ReceivePieceFromMouse(Piece piece)
     {
         Vector2Int slot = GridSlot(piece.transform.position);
-        if(slot.x >= 0 && slot.y >= 0 && slot.x < m_pieces.GetLength(0) && slot.y < m_pieces.GetLength(1)
+        if(slot.x >= 0 && slot.y >= 0 && slot.x < MaxGridWidth() && slot.y < MaxGridHeight()
            && piece.IsValidConnectionSlot(this, slot)) {
-            m_pieces[slot.x, slot.y] = piece;
+            MakePiecePartOfMe(piece, slot);
             piece.transform.SetParent(this.transform);
             piece.transform.position = gameObject.transform.position;
             SnapToGridSlot(piece, slot);
             return true;
         } else return false; // outside the max bounds of the ship
+    }
+
+    public void MakePiecePartOfMe(Piece piece, Vector2Int gridSlot) {
+        m_pieces[gridSlot.x, gridSlot.y] = piece;
+        piece.EnableCollision();
     }
 
     // Note that a grid slot is currently being dragged from
@@ -110,7 +115,7 @@ public class Ship : MonoBehaviour {
     }
 
     public void HighlightSlot(Vector2Int slot) {
-        Debug.Log("Highlighting " + slot);
+        // Debug.Log("Highlighting " + slot);
         Vector3 highlightRelativePosition = PiecePosition(slot) + gameObject.transform.position;
         GameObject highlightObj = Instantiate(highlightPrefab, highlightRelativePosition, Quaternion.identity, transform);
         m_highlights[slot.x,slot.y] = highlightObj;
