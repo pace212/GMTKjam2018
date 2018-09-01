@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61369706572962566}
   - component: {fileID: 114963435774133842}
   m_Layer: 0
-  m_Name: ShipPiece Hull
+  m_Name: Piece Hull
   m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2340f0483f8d8434f803ae158ed19e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pieceType: 0
+  m_pieceType: 4
   connectors: 00000000
   isBeingDragged: 0
 --- !u!212 &212622920370042944

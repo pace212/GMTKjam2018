@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61369706572962566}
   - component: {fileID: 114963435774133842}
   m_Layer: 0
-  m_Name: ShipPiece CannonRight
+  m_Name: Piece Deck
   m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2340f0483f8d8434f803ae158ed19e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pieceType: 0
+  m_pieceType: 3
   connectors: 00000000
   isBeingDragged: 0
 --- !u!212 &212622920370042944
@@ -134,7 +134,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: bb1918319a1f2ce448dbecb997b1a38a, type: 3}
-  m_Color: {r: 0.6431373, g: 0.6325346, b: 0.01568626, a: 1}
+  m_Color: {r: 0.6431373, g: 0.2949962, b: 0.01568626, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

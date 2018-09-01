@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 
+    public GameObject helmPrefab;
 	public static Ship instance;
 	Piece[,] m_pieces = new Piece[5, 3]; // (0,0) is the bottom-leftmost possible ship piece grid coordinate. @todo extend
     private Vector2Int gridCenter = new Vector2Int(2, 1);
+    private Vector2Int helmSlot = new Vector2Int(2, 1);
     private Vector2 bottomLeftCorner;
     public float pieceWidthInUnits;
     public float pieceHeightInUnits;
@@ -39,15 +41,24 @@ public class Ship : MonoBehaviour {
         bottomLeftCorner.x -= pieceWidthInUnits / 2;
         bottomLeftCorner.y -= pieceHeightInUnits / 2;
         pieceSize = new Vector2(pieceWidthInUnits, pieceHeightInUnits);
+
+        // initialize the helm
+        Vector3 helmRelativePosition = PiecePosition(helmSlot) + gameObject.transform.position;
+        GameObject helmPieceObj = Instantiate(helmPrefab, helmRelativePosition, Quaternion.identity, transform);
+        m_pieces[helmSlot.x,helmSlot.y] = helmPieceObj.GetComponent<Piece>();
         
-        for(int i = 1; i < 4; i++) {
-            for(int j = 1; j < 2; j++) {
-                GameObject piecePrefab = main.RandomPiecePrefab();
-                Vector3 relativePosition = PiecePosition(i,j) + gameObject.transform.position;
-                GameObject pieceObj = Instantiate(piecePrefab, relativePosition, Quaternion.identity, transform);
-                m_pieces[i,j] = pieceObj.GetComponent<Piece>();
+        /* uncomment to fill the ship up with random pieces for testing
+        for(int i = 0; i < MaxGridWidth(); i++) {
+            for(int j = 0; j < MaxGridHeight(); j++) {
+                if(! (i == gridCenter.x && j == gridCenter.y)) { // don't randomize the helm
+                    GameObject piecePrefab = main.RandomPiecePrefab();
+                    Vector3 relativePosition = PiecePosition(i,j) + gameObject.transform.position;
+                    GameObject pieceObj = Instantiate(piecePrefab, relativePosition, Quaternion.identity, transform);
+                    m_pieces[i,j] = pieceObj.GetComponent<Piece>();
+                }
             }
         }
+        */
 	}
 
     // given a ship grid position, compute the spatial (x,y) coordinates of the corresponding ship piece
@@ -61,6 +72,10 @@ public class Ship : MonoBehaviour {
         // Debug.LogFormat("grid ({0},{1}) offset ({2},{3})",
         //                 gridx, gridy, offsetx, offsety);
         return new Vector3(offsetx, offsety, 1);
+    }
+
+    public Vector3 PiecePosition(Vector2Int gridSlot) {
+        return PiecePosition(gridSlot.x, gridSlot.y);
     }
 
     // This is called when the player is done dragging, and drops a ship piece onto a valid ship grid location.
@@ -120,7 +135,7 @@ public class Ship : MonoBehaviour {
 
     // max max height in grid slots
     public int MaxGridHeight() {
-        return m_pieces.GetLength(0);
+        return m_pieces.GetLength(1);
     }
     
     // my max width in units
@@ -140,7 +155,7 @@ public class Ship : MonoBehaviour {
     // returns which (x,y) grid slot, with origin at bottom left, is the best fit for worldPos, or (-1, -1) if worldPos is outside the max ship bounds
     public Vector2Int GridSlot(Vector2 worldPos) {
         Vector2 offset = worldPos - bottomLeftCorner - (Vector2)gameObject.transform.position;
-        Debug.Log("offset = " + offset + " pieceSize = " + pieceSize + " MaxShipSize = " + MaxShipSize());
+        // Debug.Log("offset = " + offset + " pieceSize = " + pieceSize + " MaxShipSize = " + MaxShipSize());
         if (offset.x < 0 || offset.x > MaxWidth()
             || offset.y < 0 || offset.y > MaxHeight())
         {

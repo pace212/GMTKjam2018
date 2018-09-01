@@ -88,11 +88,6 @@ public class Piece : MonoBehaviour {
         main.playerShip.UnhighlightAllSlots();
     }
 
-    // constructor: a new random type of ship piece
-    // public Piece() {
-    //     m_pieceType = (PieceType)pieceTypeArray.GetValue(Random.Range(0, pieceTypeArray.GetLength(0)));
-    // }
-
     bool HasNorthConnector() {
         return connectors[0];
     }
@@ -122,7 +117,7 @@ public class Piece : MonoBehaviour {
 	}
 
     public bool IsValidConnectionSlot(Ship aShip, Vector2Int gridSlot) {
-        if(aShip.GetPieceAt(gridSlot)) {
+        if(aShip.GetPieceAt(gridSlot) != null) {
             return false; // this slot is already full
         }
         if(HasNorthConnector()) {
