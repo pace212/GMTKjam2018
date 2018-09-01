@@ -43,7 +43,7 @@ public class Ship : MonoBehaviour {
         for(int i = 1; i < 4; i++) {
             for(int j = 1; j < 2; j++) {
                 GameObject piecePrefab = main.RandomPiecePrefab();
-                Vector2 relativePosition = PiecePosition(i,j);
+                Vector3 relativePosition = PiecePosition(i,j) + gameObject.transform.position;
                 GameObject pieceObj = Instantiate(piecePrefab, relativePosition, Quaternion.identity, transform);
                 m_pieces[i,j] = pieceObj.GetComponent<Piece>();
             }
@@ -52,7 +52,7 @@ public class Ship : MonoBehaviour {
 
     // given a ship grid position, compute the spatial (x,y) coordinates of the corresponding ship piece
     // relative to the ship's center position
-    public Vector2 PiecePosition(int gridx, int gridy) {
+    public Vector3 PiecePosition(int gridx, int gridy) {
         int gridOffsetX = gridx - gridCenter.x;
         int gridOffsetY = gridy - gridCenter.y;
         Vector2 centerPosition = gameObject.transform.position;
@@ -60,7 +60,7 @@ public class Ship : MonoBehaviour {
         float offsety = gridOffsetY * pieceHeightInUnits;
         // Debug.LogFormat("grid ({0},{1}) offset ({2},{3})",
         //                 gridx, gridy, offsetx, offsety);
-        return new Vector2(offsetx, offsety);
+        return new Vector3(offsetx, offsety, 1);
     }
 
     // This is called when the player is done dragging, and drops a ship piece onto a valid ship grid location.
@@ -107,7 +107,7 @@ public class Ship : MonoBehaviour {
     
     // returns which (x,y) grid slot, with origin at bottom left, is the best fit for worldPos, or (-1, -1) if worldPos is outside the max ship bounds
     public Vector2Int GridSlot(Vector2 worldPos) {
-        Vector2 offset = worldPos - bottomLeftCorner;
+        Vector2 offset = worldPos - bottomLeftCorner - (Vector2)gameObject.transform.position;
         Debug.Log("offset = " + offset + " pieceSize = " + pieceSize + " MaxShipSize = " + MaxShipSize());
         if (offset.x < 0 || offset.x > MaxWidth()
             || offset.y < 0 || offset.y > MaxHeight())
