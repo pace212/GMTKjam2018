@@ -71,6 +71,7 @@ public class Piece : MonoBehaviour {
         isBeingDragged = true;
         originalItemPosition = this.transform.position;
         main.playerShip.ReserveGridSlot(originalItemPosition);
+        ShowPotentialLocations(main.playerShip);
     }
 
     void OnMouseUp()
@@ -84,6 +85,7 @@ public class Piece : MonoBehaviour {
             }
         }
         main.playerShip.ReleaseGridSlot();
+        main.playerShip.UnhighlightAllSlots();
     }
 
     // constructor: a new random type of ship piece
@@ -109,7 +111,48 @@ public class Piece : MonoBehaviour {
 
 	public void ShowPotentialLocations(Ship aShip)
 	{
-
+        for(int i = 0; i < aShip.MaxGridWidth(); i++) {
+            for(int j = 0; j < aShip.MaxGridHeight(); j++) {
+                Vector2Int slot = new Vector2Int(i,j);
+                if(IsValidConnectionSlot(aShip, slot)){
+                    aShip.HighlightSlot(slot);
+                }
+            }
+        }
 	}
-            
+
+    public bool IsValidConnectionSlot(Ship aShip, Vector2Int gridSlot) {
+        if(aShip.GetPieceAt(gridSlot)) {
+            return false; // this slot is already full
+        }
+        if(HasNorthConnector()) {
+            Vector2Int northSlot = new Vector2Int(gridSlot.x, gridSlot.y+1);
+            Piece shipPiece = aShip.GetPieceAt(northSlot);
+            if(shipPiece != null && shipPiece.HasSouthConnector()) {
+                return true;
+            }
+        }
+        if(HasSouthConnector()) {
+            Vector2Int southSlot = new Vector2Int(gridSlot.x, gridSlot.y-1);
+            Piece shipPiece = aShip.GetPieceAt(southSlot);
+            if(shipPiece != null && shipPiece.HasNorthConnector()) {
+                return true;
+            }
+        }
+        if(HasEastConnector()) {
+            Vector2Int eastSlot = new Vector2Int(gridSlot.x+1, gridSlot.y);
+            Piece shipPiece = aShip.GetPieceAt(eastSlot);
+            if(shipPiece != null && shipPiece.HasWestConnector()) {
+                return true;
+            }
+        }
+        if(HasWestConnector()) {
+            Vector2Int westSlot = new Vector2Int(gridSlot.x-1, gridSlot.y);
+            Piece shipPiece = aShip.GetPieceAt(westSlot);
+            if(shipPiece != null && shipPiece.HasEastConnector()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -69,12 +69,13 @@ public class Ship : MonoBehaviour {
     public bool ReceivePieceFromMouse(Piece piece)
     {
         Vector2Int slot = GridSlot(piece.transform.position);
-        if(slot.x > 0 && slot.y > 0) {
+        if(slot.x > 0 && slot.y > 0 && slot.x < m_pieces.GetLength(0) && slot.y < m_pieces.GetLength(1)
+           && piece.IsValidConnectionSlot(this, slot)) {
             m_pieces[slot.x, slot.y] = piece;
             piece.transform.SetParent(this.transform);
             piece.transform.position = gameObject.transform.position;
             SnapToGridSlot(piece, slot);
-            return true; // @todo only allow valid piece connections
+            return true;
         } else return false; // outside the max bounds of the ship
     }
 
@@ -91,6 +92,37 @@ public class Ship : MonoBehaviour {
         reservedGridSlot = new Vector2Int(-1, -1);
     }
 
+    public void HighlightSlot(Vector2Int slot) {
+        Debug.Log("Please pretend that " + slot + " is now highlighted");
+    }
+    
+    public void UnhighlightAllSlots() {
+        for(int i = 0; i < MaxGridWidth(); i++) {
+            for(int j = 0; j < MaxGridHeight(); j++) {
+                Vector2Int slot = new Vector2Int(i,j);
+                // @todo
+            }
+        }
+    }
+    
+    public Piece GetPieceAt (Vector2Int slot) {
+        if(slot.x > 0 && slot.y > 0 && slot.x < m_pieces.GetLength(0) && slot.y < m_pieces.GetLength(1)) {
+            return m_pieces[slot.x, slot.y];
+        } else {
+            return null;
+        }
+    }
+    
+    // my max width in grid slots
+    public int MaxGridWidth() {
+        return m_pieces.GetLength(0);
+    }
+
+    // max max height in grid slots
+    public int MaxGridHeight() {
+        return m_pieces.GetLength(0);
+    }
+    
     // my max width in units
     public float MaxWidth() {
         return pieceWidthInUnits * m_pieces.GetLength(0);
