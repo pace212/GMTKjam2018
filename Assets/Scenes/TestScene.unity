@@ -718,6 +718,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helmPrefab: {fileID: 1246096287067676, guid: fc914183e5776c04ab3cc7c38933f87e, type: 2}
+  highlightPrefab: {fileID: 1333062286077876, guid: 66702ccfc02b05a48af37bb1dd7cb2c6,
+    type: 2}
   pieceWidthInUnits: 0.7
   pieceHeightInUnits: 0.7
 --- !u!1 &1556893091
@@ -880,6 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helmPrefab: {fileID: 0}
+  highlightPrefab: {fileID: 0}
   pieceWidthInUnits: 0
   pieceHeightInUnits: 0
 --- !u!1001 &1676761616

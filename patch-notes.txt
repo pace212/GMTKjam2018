@@ -1,2 +1,3 @@
-next: drop
-next next: only allow valid piece connections
+highlight
+next: turn off colliders for pieces that are being dragged
+

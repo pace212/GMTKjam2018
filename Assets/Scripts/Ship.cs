@@ -6,8 +6,10 @@ using UnityEngine;
 public class Ship : MonoBehaviour {
 
     public GameObject helmPrefab;
+    public GameObject highlightPrefab;
 	public static Ship instance;
 	Piece[,] m_pieces = new Piece[5, 3]; // (0,0) is the bottom-leftmost possible ship piece grid coordinate. @todo extend
+    GameObject[,] m_highlights = new GameObject[5, 3];
     private Vector2Int gridCenter = new Vector2Int(2, 1);
     private Vector2Int helmSlot = new Vector2Int(2, 1);
     private Vector2 bottomLeftCorner;
@@ -108,14 +110,19 @@ public class Ship : MonoBehaviour {
     }
 
     public void HighlightSlot(Vector2Int slot) {
-        Debug.Log("Please pretend that " + slot + " is now highlighted");
+        Debug.Log("Highlighting " + slot);
+        Vector3 highlightRelativePosition = PiecePosition(slot) + gameObject.transform.position;
+        GameObject highlightObj = Instantiate(highlightPrefab, highlightRelativePosition, Quaternion.identity, transform);
+        m_highlights[slot.x,slot.y] = highlightObj;
     }
     
     public void UnhighlightAllSlots() {
         for(int i = 0; i < MaxGridWidth(); i++) {
             for(int j = 0; j < MaxGridHeight(); j++) {
-                Vector2Int slot = new Vector2Int(i,j);
-                // @todo
+                GameObject highlight = m_highlights[i,j];
+                if(highlight != null) {
+                    GameObject.Destroy(highlight); // it would be more efficient to set up a whole matrix of these, then activate and deactivate them as needed, but hey, jam
+                }
             }
         }
     }
@@ -175,7 +182,7 @@ public class Ship : MonoBehaviour {
         Vector2 pieceSizeOffset = pieceSize / 2;
         Vector2 slotOffset = slot * pieceSize;
         Vector2 offset = offsetToOrigin + slotOffset + pieceSizeOffset;
-        Debug.Log("SnapToGridSlot: " + slot + " " + offset + " " + transform.localScale + " " + offsetToOrigin + " " + slotOffset + " " + pieceSizeOffset + " ");
+        // Debug.Log("SnapToGridSlot: " + slot + " " + offset + " " + transform.localScale + " " + offsetToOrigin + " " + slotOffset + " " + pieceSizeOffset + " ");
         piece.transform.localPosition = offset / transform.localScale;
     }
 
