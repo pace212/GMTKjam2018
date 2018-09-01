@@ -6,7 +6,7 @@ public class Ship : MonoBehaviour {
 
 	public static Ship instance;
 	ShipPiece[,] m_shipPieces = new ShipPiece[5, 3]; // @todo extend
-    public Vector2Int gridCenter = new Vector2Int(2, 1);
+    private Vector2Int gridCenter = new Vector2Int(2, 1);
     public float shipPieceWidthInUnits;
     public float shipPieceHeightInUnits;
 
@@ -49,6 +49,8 @@ public class Ship : MonoBehaviour {
         Vector2 centerPosition = gameObject.transform.position;
         float offsetx = gridOffsetX * shipPieceWidthInUnits;
         float offsety = gridOffsetY * shipPieceHeightInUnits;
+        Debug.LogFormat("grid ({0},{1}) offset ({2},{3})",
+                        gridx, gridy, offsetx, offsety);
         return new Vector2(offsetx, offsety);
     }
 }
