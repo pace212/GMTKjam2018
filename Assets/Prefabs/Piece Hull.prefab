@@ -101,6 +101,7 @@ MonoBehaviour:
   socket: {fileID: 0}
   isConnectedToHelm: 0
   driftAwaySpeed: 1
+  attachSound: {fileID: 8300000, guid: 77a96a1f3b3520f4d93114b9d4d28b4f, type: 3}
 --- !u!212 &212622920370042944
 SpriteRenderer:
   m_ObjectHideFlags: 1

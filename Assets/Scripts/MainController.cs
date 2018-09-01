@@ -7,8 +7,11 @@ public class MainController : MonoBehaviour {
 	public GameObject[] piecePrefabs;
     public Ship playerShip;
 
+    private AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
+        audioSource = GetComponent<AudioSource>();
         GameObject playerShipObj = GameObject.Find("PlayerShip");
         playerShip = playerShipObj.GetComponent<Ship>();
 	}

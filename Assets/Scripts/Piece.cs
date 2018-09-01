@@ -20,6 +20,8 @@ public class Piece : MonoBehaviour {
     public float driftAwaySpeed = 1; // the speed at which broken-off ship parts drift down off the screen
     private float driftAwayWobble = 0.5f; // how much back-and-forth wobble the ship parts wobble as they drift down off the screen
     private Vector2 velocity = new Vector2(0,0);
+    public AudioClip attachSound;
+    private AudioSource audioSource;
     
     // constructor: a new specific type of ship piece
     public Piece(PieceType type) {
@@ -30,6 +32,7 @@ public class Piece : MonoBehaviour {
 	{
         GameObject manager = GameObject.Find("GameManagers");
         main = manager.GetComponent<MainController>();
+        audioSource = GetComponent<AudioSource>();
 		switch(m_pieceType)
 		{
 			case PieceType.helm:
@@ -123,16 +126,15 @@ public class Piece : MonoBehaviour {
         }
     }
 
-    public void EnableCollision() {
+    // I am now attached to the ship
+    public void Attach() {
         gameObject.tag = "Ship";
+        audioSource.PlayOneShot(attachSound);
     }
-
-    public void DisableCollision() {
-        gameObject.tag = "Background";
-    }
-
+    
     // I break off of the ship
     public void BreakOff() {
+        gameObject.tag = "Background";
         main.playerShip.ReleaseGridSlot();
         isDriftingAway = true;
         isBeingDragged = false;

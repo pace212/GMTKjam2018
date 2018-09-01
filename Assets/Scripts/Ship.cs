@@ -100,7 +100,7 @@ public class Ship : MonoBehaviour {
 
     public void MakePiecePartOfMe(Piece piece, Vector2Int gridSlot) {
         m_pieces[gridSlot.x, gridSlot.y] = piece;
-        piece.EnableCollision();
+        piece.Attach();
         if(piece.socket != null) {
             piece.socket.m_piece = null;
             piece.socket = null;
@@ -111,7 +111,6 @@ public class Ship : MonoBehaviour {
     private void MakePieceNotPartOfMe(int gridx, int gridy) {
         Piece piece = GetPieceAt(gridx, gridy);
         m_pieces[gridx, gridy] = null;
-        piece.DisableCollision();
         piece.isConnectedToHelm = false;
         piece.BreakOff();
     }
