@@ -69,7 +69,7 @@ public class Ship : MonoBehaviour {
     public bool ReceivePieceFromMouse(Piece piece)
     {
         Vector2Int slot = GridSlot(piece.transform.position);
-        if(slot.x > 0 && slot.y > 0 && slot.x < m_pieces.GetLength(0) && slot.y < m_pieces.GetLength(1)
+        if(slot.x >= 0 && slot.y >= 0 && slot.x < m_pieces.GetLength(0) && slot.y < m_pieces.GetLength(1)
            && piece.IsValidConnectionSlot(this, slot)) {
             m_pieces[slot.x, slot.y] = piece;
             piece.transform.SetParent(this.transform);
@@ -106,7 +106,7 @@ public class Ship : MonoBehaviour {
     }
     
     public Piece GetPieceAt (Vector2Int slot) {
-        if(slot.x > 0 && slot.y > 0 && slot.x < m_pieces.GetLength(0) && slot.y < m_pieces.GetLength(1)) {
+        if(slot.x >= 0 && slot.y >= 0 && slot.x < m_pieces.GetLength(0) && slot.y < m_pieces.GetLength(1)) {
             return m_pieces[slot.x, slot.y];
         } else {
             return null;
