@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Path { vertical };
 
 public class Projectile : MonoBehaviour {
-	public Path m_projectilePath = Path.vertical;
 
 	public float m_speed = 1.5f;
 	int m_damage = 1;
 
 	void Update()
 	{
-		switch(m_projectilePath)
-		{
-			case Path.vertical:
-				transform.Translate(Vector3.down * Time.deltaTime * m_speed);
-				break;
-		}
+
+
+		transform.Translate(Vector3.up * Time.deltaTime * m_speed);
 	}
 
 	public void OnTriggerEnter2D(Collider2D collision)

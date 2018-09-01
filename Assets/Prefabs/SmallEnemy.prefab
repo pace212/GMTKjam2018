@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1685608034610720}
   m_IsPrefabAsset: 1
+--- !u!1 &1326790374129308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4422570093423226}
+  m_Layer: 0
+  m_Name: Cannon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1685608034610720
 GameObject:
   m_ObjectHideFlags: 0
@@ -21,6 +36,7 @@ GameObject:
   - component: {fileID: 4871860033743984}
   - component: {fileID: 212555358398524224}
   - component: {fileID: 114121424446365434}
+  - component: {fileID: 114647191585462946}
   m_Layer: 0
   m_Name: SmallEnemy
   m_TagString: Enemy
@@ -28,16 +44,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4422570093423226
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1326790374129308}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4871860033743984}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!4 &4871860033743984
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1685608034610720}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 0.8, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4422570093423226}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,6 +87,26 @@ MonoBehaviour:
   m_deathTimer: 1.5
   m_maxHealth: 3
   m_health: 0
+--- !u!114 &114647191585462946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685608034610720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba5f836121a31e4b80df0a048cc8140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bullet: {fileID: 1083424791777266, guid: 7d5b1cd63471ad04e9f922c776de0add, type: 2}
+  m_cannons:
+  - {fileID: 1326790374129308}
+  m_enemyBehavior:
+    m_movementMethod: 0
+    m_startFiringDelay: 0
+    m_cannonDelay: 0
+    m_firingDelay: 0
+  m_speed: 1
 --- !u!212 &212555358398524224
 SpriteRenderer:
   m_ObjectHideFlags: 1
