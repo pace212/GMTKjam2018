@@ -78,20 +78,21 @@ public class Piece : MonoBehaviour {
     }
 
     void OnMouseEnter() {
-        if(socket != null && !isBeingDragged) {
+        if(socket && !isBeingDragged) {
             socket.Highlight();
         }
     }
 
     void OnMouseExit() {
-        if(socket != null && !isBeingDragged) {
+        if(socket && !isBeingDragged) {
             socket.Unhighlight();
         }
     }
 
     void OnMouseDown()
     {
-        if(!isDriftingAway) {
+        if(socket && !isDriftingAway) { // remove socket if we allow repositioning ship pieces
+            // Debug.Log("mouse down" + " " + socket + " " + isDriftingAway + " " + isBeingDragged);
             isBeingDragged = true;
             if(socket != null) {
                 socket.Unhighlight();
@@ -104,19 +105,22 @@ public class Piece : MonoBehaviour {
 
     void OnMouseUp()
     {
-        isBeingDragged = false;
-        if(socket != null) {
-            socket.Unhighlight();
-        }
-
-        if ( ! main.playerShip.ReceivePieceFromMouse(this))
-        {
-            if (this != null) { // @hack to robustify against DestroyImmediate destroying me in the middle of my OnMouseUp event
-                transform.position = originalItemPosition;
+        if(socket && !isDriftingAway) { // remove socket if we allow repositioning ship pieces
+            // Debug.Log("mouse up" + " " + socket + " " + isDriftingAway + " " + isBeingDragged);
+            isBeingDragged = false;
+            if(socket != null) {
+                socket.Unhighlight();
             }
+
+            if ( ! main.playerShip.ReceivePieceFromMouse(this))
+            {
+                if (this != null) { // @hack to robustify against DestroyImmediate destroying me in the middle of my OnMouseUp event
+                    transform.position = originalItemPosition;
+                }
+            }
+            main.playerShip.ReleaseGridSlot();
+            main.playerShip.UnhighlightAllSlots();
         }
-        main.playerShip.ReleaseGridSlot();
-        main.playerShip.UnhighlightAllSlots();
     }
 
     public void EnableCollision() {
@@ -129,8 +133,12 @@ public class Piece : MonoBehaviour {
 
     // I break off of the ship
     public void BreakOff() {
+        main.playerShip.ReleaseGridSlot();
         isDriftingAway = true;
         isBeingDragged = false;
+        if(socket != null) {
+            socket.Unhighlight();
+        }
     }        
     
     bool HasNorthConnector() {
