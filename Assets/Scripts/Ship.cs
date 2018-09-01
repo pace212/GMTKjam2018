@@ -99,6 +99,10 @@ public class Ship : MonoBehaviour {
     public void MakePiecePartOfMe(Piece piece, Vector2Int gridSlot) {
         m_pieces[gridSlot.x, gridSlot.y] = piece;
         piece.EnableCollision();
+        if(piece.socket != null) {
+            piece.socket.m_piece = null;
+            piece.socket = null;
+        }
     }
 
     // Note that a grid slot is currently being dragged from

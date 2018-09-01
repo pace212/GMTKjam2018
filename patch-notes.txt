@@ -1,3 +1,3 @@
-highlight
-next: turn off colliders for pieces that are being dragged
+highlight sockets when you hover over them
+next: sound effects (currently they are all silent, but they will be ready for you, Chloe)
 

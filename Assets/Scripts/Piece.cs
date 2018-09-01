@@ -14,7 +14,7 @@ public class Piece : MonoBehaviour {
     public bool isBeingDragged = false;
     private Vector3 originalItemPosition;
     private MainController main;
-    Collider2D boxCollider;
+    public Socket socket;
     
     // constructor: a new specific type of ship piece
     public Piece(PieceType type) {
@@ -25,7 +25,6 @@ public class Piece : MonoBehaviour {
 	{
         GameObject manager = GameObject.Find("GameManagers");
         main = manager.GetComponent<MainController>();
-        boxCollider = GetComponent<Collider2D>();
 		switch(m_pieceType)
 		{
 			case PieceType.helm:
@@ -68,9 +67,24 @@ public class Piece : MonoBehaviour {
         }
     }
 
+    void OnMouseEnter() {
+        if(socket != null && !isBeingDragged) {
+            socket.Highlight();
+        }
+    }
+
+    void OnMouseExit() {
+        if(socket != null && !isBeingDragged) {
+            socket.Unhighlight();
+        }
+    }
+
     void OnMouseDown()
     {
         isBeingDragged = true;
+        if(socket != null) {
+            socket.Unhighlight();
+        }
         originalItemPosition = this.transform.position;
         main.playerShip.ReserveGridSlot(originalItemPosition);
         ShowPotentialLocations(main.playerShip);
@@ -79,6 +93,9 @@ public class Piece : MonoBehaviour {
     void OnMouseUp()
     {
         isBeingDragged = false;
+        if(socket != null) {
+            socket.Unhighlight();
+        }
 
         if ( ! main.playerShip.ReceivePieceFromMouse(this))
         {
