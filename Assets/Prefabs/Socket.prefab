@@ -20,8 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4388618733766550}
   - component: {fileID: 212773413744964496}
-  - component: {fileID: 114105439508224042}
-  - component: {fileID: 114975835562383364}
+  - component: {fileID: 114784571090134376}
   m_Layer: 0
   m_Name: Socket
   m_TagString: Untagged
@@ -42,26 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114105439508224042
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654857093971160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22204526593fae042920c1555b888877, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipPiecePrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_shipPiece: {fileID: 0}
-  playerShip: {fileID: 0}
-  containedShipPieceIndex: 0
---- !u!114 &114975835562383364
+--- !u!114 &114784571090134376
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

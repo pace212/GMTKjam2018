@@ -49,8 +49,8 @@ public class Ship : MonoBehaviour {
         Vector2 centerPosition = gameObject.transform.position;
         float offsetx = gridOffsetX * shipPieceWidthInUnits;
         float offsety = gridOffsetY * shipPieceHeightInUnits;
-        Debug.LogFormat("grid ({0},{1}) offset ({2},{3})",
-                        gridx, gridy, offsetx, offsety);
+        // Debug.LogFormat("grid ({0},{1}) offset ({2},{3})",
+        //                 gridx, gridy, offsetx, offsety);
         return new Vector2(offsetx, offsety);
     }
 }

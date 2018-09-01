@@ -717,7 +717,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c71aaaf2b1d2c479ee33de9d2220cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridCenter: {x: 1, y: 1}
   shipPieceWidthInUnits: 0.7
   shipPieceHeightInUnits: 0.7
 --- !u!1 &1556893091
@@ -879,7 +878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c71aaaf2b1d2c479ee33de9d2220cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridCenter: {x: 1, y: 1}
   shipPieceWidthInUnits: 0.1
   shipPieceHeightInUnits: 0.1
 --- !u!1001 &1676761616
