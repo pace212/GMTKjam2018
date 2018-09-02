@@ -386,7 +386,7 @@ MonoBehaviour:
   isBeingDragged: 0
   socket: {fileID: 0}
   isConnectedToHelm: 0
-  driftAwaySpeed: 1
+  driftAwaySpeed: 0
   attachSound: {fileID: 8300000, guid: 77a96a1f3b3520f4d93114b9d4d28b4f, type: 3}
 --- !u!114 &114929029090635106
 MonoBehaviour:
