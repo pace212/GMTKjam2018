@@ -8,7 +8,9 @@ public class MainController : MonoBehaviour {
 	public GameObject[] piecePrefabs;
     public Ship playerShip;
     public float secondsBetweenPieceDrops;
+    public float secondsUntilVictorie;
     public bool gameOver = false;
+    public bool isVictorieuouous = false;
     
     private float secondsSinceLastPieceDrop = 0;
     private AudioSource audioSource;
@@ -38,15 +40,25 @@ public class MainController : MonoBehaviour {
             {
                 Restart();
             }
-        }
-        secondsSinceLastPieceDrop += Time.deltaTime;
-        if(secondsSinceLastPieceDrop >= secondsBetweenPieceDrops) {
-            DropNewPiece();
-        }
+        } else {
+            secondsUntilVictorie -= Time.deltaTime;
+            if(secondsUntilVictorie <= 0) {
+                Win();
+            }
+            secondsSinceLastPieceDrop += Time.deltaTime;
+            if(secondsSinceLastPieceDrop >= secondsBetweenPieceDrops) {
+                DropNewPiece();
+            }
+}
 	}
 
     void Restart() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void Win() {
+        gameOver = true;
+        isVictorieuouous = true;
     }
     
     void DropNewPiece () {
@@ -60,12 +72,21 @@ public class MainController : MonoBehaviour {
 
     void OnGUI() {
 		if(gameOver) {
-			GUIStyle gameOverStyle = new GUIStyle();
-			gameOverStyle.normal.textColor = Color.red;
-			gameOverStyle.fontSize = 64;
-			gameOverStyle.fontStyle = FontStyle.Bold;
-			gameOverStyle.alignment = TextAnchor.LowerCenter;
-			GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 20), "ARRRRRRRRR\nTO RESTART\n(Jake, please fix this)", gameOverStyle);
+            if(isVictorieuouous) {
+                GUIStyle gameOverStyle = new GUIStyle();
+                gameOverStyle.normal.textColor = Color.green;
+                gameOverStyle.fontSize = 64;
+                gameOverStyle.fontStyle = FontStyle.Bold;
+                gameOverStyle.alignment = TextAnchor.LowerCenter;
+                GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 20), "VICTORIE\n\nARRRRRRRRR\nTO RESTART\n(Jake, please fix this)", gameOverStyle);
+            } else {
+                GUIStyle gameOverStyle = new GUIStyle();
+                gameOverStyle.normal.textColor = Color.red;
+                gameOverStyle.fontSize = 64;
+                gameOverStyle.fontStyle = FontStyle.Bold;
+                gameOverStyle.alignment = TextAnchor.LowerCenter;
+                GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 20), "ARRRRRRRRR\nTO RESTART\n(Jake, please fix this)", gameOverStyle);
+            }
 		}
 	}
 

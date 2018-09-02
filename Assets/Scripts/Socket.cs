@@ -35,6 +35,7 @@ public class Socket : MonoBehaviour {
         SpriteRenderer sprite = pieceObj.GetComponent<SpriteRenderer>();
         if (sprite != null) {
             sprite.sortingOrder = pieceInitialSortOrder;
+            // sprite.transform.position = new Vector3(sprite.transform.position.x, sprite.transform.position.y, -4.2f);
         }
         m_piece = pieceObj.GetComponent<Piece>();
         m_piece.socket = this;
