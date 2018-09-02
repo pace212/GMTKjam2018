@@ -129,7 +129,9 @@ public class Piece : MonoBehaviour {
     // I am now attached to the ship
     public void Attach() {
         gameObject.tag = "Ship";
-        audioSource.PlayOneShot(attachSound);
+        if(audioSource) {
+            audioSource.PlayOneShot(attachSound);
+        }
     }
     
     // I break off of the ship
