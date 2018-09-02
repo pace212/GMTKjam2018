@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4141959085335046}
   - component: {fileID: 212234194653221466}
   m_Layer: 0
-  m_Name: Connection_Point_Indicator
+  m_Name: South
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

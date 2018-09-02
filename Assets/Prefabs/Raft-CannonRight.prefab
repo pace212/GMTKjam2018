@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4285490449796480}
   - component: {fileID: 212315478524925156}
   m_Layer: 0
-  m_Name: Connection_Point_Indicator
+  m_Name: West
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4921149630084390}
   - component: {fileID: 212983681180875564}
   m_Layer: 0
-  m_Name: Connection_Point_Indicator (1)
+  m_Name: North
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 4677176273555566}
   - component: {fileID: 212684767577426490}
   m_Layer: 0
-  m_Name: Connection_Point_Indicator (2)
+  m_Name: South
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -161,7 +161,14 @@ public class Piece : MonoBehaviour {
         if(audioSource) {
             audioSource.PlayOneShot(breakSound,2);
         }
-    }        
+    }
+
+    public void DisableConnector(string cardinalDirection) {
+        Transform connectorTrans = transform.Find(cardinalDirection);
+        if(connectorTrans) {
+            connectorTrans.gameObject.SetActive(false);
+        }
+    }
 
     // I've just been reduced to zero health
     public void Die() {

@@ -98,6 +98,38 @@ public class Ship : MonoBehaviour {
             piece.socket = null;
         }
         piece.isConnectedToHelm = true;
+        if(piece.HasNorthConnector()) {
+            Vector2Int northSlot = new Vector2Int(gridSlot.x, gridSlot.y+1);
+            Piece otherPiece = GetPieceAt(northSlot);
+            if(otherPiece != null && !otherPiece.HasSouthConnector()) {
+                piece.DisableConnector("North");
+                otherPiece.DisableConnector("South");
+            }
+        }
+        if(piece.HasSouthConnector()) {
+            Vector2Int southSlot = new Vector2Int(gridSlot.x, gridSlot.y-1);
+            Piece otherPiece = GetPieceAt(southSlot);
+            if(otherPiece != null && !otherPiece.HasNorthConnector()) {
+                piece.DisableConnector("South");
+                otherPiece.DisableConnector("North");
+            }
+        }
+        if(piece.HasEastConnector()) {
+            Vector2Int eastSlot = new Vector2Int(gridSlot.x+1, gridSlot.y);
+            Piece otherPiece = GetPieceAt(eastSlot);
+            if(otherPiece != null && !otherPiece.HasWestConnector()) {
+                piece.DisableConnector("East");
+                otherPiece.DisableConnector("West");
+            }
+        }
+        if(piece.HasWestConnector()) {
+            Vector2Int westSlot = new Vector2Int(gridSlot.x-1, gridSlot.y);
+            Piece otherPiece = GetPieceAt(westSlot);
+            if(otherPiece != null && !otherPiece.HasEastConnector()) {
+                piece.DisableConnector("West");
+                otherPiece.DisableConnector("East");
+            }
+        }
     }
 
     private void MakePieceNotPartOfMe(int gridx, int gridy) {
