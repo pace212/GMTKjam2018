@@ -7,7 +7,6 @@ public class Ship : MonoBehaviour {
 
     public GameObject helmPrefab;
     public GameObject highlightPrefab;
-	public static Ship instance;
     public static readonly int maxGridWidth = 5;
     public static readonly int maxGridHeight = 3;
     private Vector2Int gridCenter = new Vector2Int(2, 1);
@@ -23,20 +22,7 @@ public class Ship : MonoBehaviour {
     private MainController main;
 	// Vector2 centerPosition = new Vector2(0f, -2.5f);
 
-	void Awake()
-	{
-        // What is this doing? Making sure there's only ever one instance of Ship? -Pace
-		if(instance == null)
-		{
-			instance = this;
-			GameObject.DontDestroyOnLoad(gameObject);
-			Init();
-		}
-		else
-		{	GameObject.Destroy(gameObject);	}
-	}
-
-	private void Init()
+	private void Start()
 	{
         GameObject manager = GameObject.Find("GameManagers");
         main = manager.GetComponent<MainController>();

@@ -182,7 +182,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 162916963}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.35, y: 0, z: 0}
+  m_LocalPosition: {x: -7.4, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -701,7 +701,6 @@ GameObject:
   - component: {fileID: 1612448647}
   - component: {fileID: 1612448646}
   - component: {fileID: 1612448648}
-  - component: {fileID: 1612448649}
   m_Layer: 0
   m_Name: Sea
   m_TagString: Background
@@ -763,7 +762,7 @@ Transform:
   m_GameObject: {fileID: 1612448645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 11.6, y: 10, z: 1}
+  m_LocalScale: {x: 13.2, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -793,21 +792,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1612448649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1612448645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63c71aaaf2b1d2c479ee33de9d2220cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helmPrefab: {fileID: 0}
-  highlightPrefab: {fileID: 0}
-  pieceWidthInUnits: 0
-  pieceHeightInUnits: 0
 --- !u!1001 &1676761616
 Prefab:
   m_ObjectHideFlags: 0
@@ -1018,7 +1002,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2097489713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.35, y: 0, z: 0}
+  m_LocalPosition: {x: 7.4, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 10, z: 1}
   m_Children:
   - {fileID: 1273827103}
