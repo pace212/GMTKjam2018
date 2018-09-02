@@ -310,20 +310,130 @@ MonoBehaviour:
     m_eulerRotation: {x: 0, y: 0, z: 180}
     m_enemyBehaviorIndex: 4
   - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
-    m_spawnTime: 46
+    m_spawnTime: 43
     m_spawnLocation: {x: 1, y: 6, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 180}
     m_enemyBehaviorIndex: 5
   - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
-    m_spawnTime: 52
+    m_spawnTime: 46
     m_spawnLocation: {x: -6.75, y: 2.25, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 270}
     m_enemyBehaviorIndex: 6
   - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
-    m_spawnTime: 58
+    m_spawnTime: 49
     m_spawnLocation: {x: 6.75, y: 2.25, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 90}
     m_enemyBehaviorIndex: 7
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 54
+    m_spawnLocation: {x: 6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 90}
+    m_enemyBehaviorIndex: 1
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 60
+    m_spawnLocation: {x: -6.75, y: 3.5, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 270}
+    m_enemyBehaviorIndex: 0
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 66
+    m_spawnLocation: {x: 6.75, y: 0, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 45}
+    m_enemyBehaviorIndex: 3
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 68
+    m_spawnLocation: {x: 6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 90}
+    m_enemyBehaviorIndex: 7
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 70
+    m_spawnLocation: {x: -1, y: 6, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 180}
+    m_enemyBehaviorIndex: 4
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 76
+    m_spawnLocation: {x: -6.75, y: 0, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 315}
+    m_enemyBehaviorIndex: 2
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 78
+    m_spawnLocation: {x: -6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 270}
+    m_enemyBehaviorIndex: 6
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 80
+    m_spawnLocation: {x: 1, y: 6, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 180}
+    m_enemyBehaviorIndex: 5
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 86
+    m_spawnLocation: {x: 6.75, y: 1, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 90}
+    m_enemyBehaviorIndex: 1
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 87
+    m_spawnLocation: {x: -6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 270}
+    m_enemyBehaviorIndex: 0
+  - m_enemy: {fileID: 1307281566364342, guid: fb892a849bf7cf84d8148bf2b8eb9884, type: 2}
+    m_spawnTime: 87
+    m_spawnLocation: {x: 6.75, y: 3.5, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 90}
+    m_enemyBehaviorIndex: 1
+  - m_enemy: {fileID: 1307281566364342, guid: fb892a849bf7cf84d8148bf2b8eb9884, type: 2}
+    m_spawnTime: 88
+    m_spawnLocation: {x: -6.75, y: 4.75, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 270}
+    m_enemyBehaviorIndex: 0
+  - m_enemy: {fileID: 1307281566364342, guid: fb892a849bf7cf84d8148bf2b8eb9884, type: 2}
+    m_spawnTime: 92
+    m_spawnLocation: {x: -1, y: 6, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 240}
+    m_enemyBehaviorIndex: 2
+  - m_enemy: {fileID: 1307281566364342, guid: fb892a849bf7cf84d8148bf2b8eb9884, type: 2}
+    m_spawnTime: 94
+    m_spawnLocation: {x: 1, y: 6, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 150}
+    m_enemyBehaviorIndex: 3
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 100
+    m_spawnLocation: {x: -1, y: 6, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 180}
+    m_enemyBehaviorIndex: 4
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 100
+    m_spawnLocation: {x: 1, y: 6, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 180}
+    m_enemyBehaviorIndex: 5
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 104
+    m_spawnLocation: {x: -6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 270}
+    m_enemyBehaviorIndex: 6
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 104
+    m_spawnLocation: {x: 6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 90}
+    m_enemyBehaviorIndex: 7
+  - m_enemy: {fileID: 1307281566364342, guid: fb892a849bf7cf84d8148bf2b8eb9884, type: 2}
+    m_spawnTime: 110
+    m_spawnLocation: {x: -6.75, y: 4.75, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 270}
+    m_enemyBehaviorIndex: 0
+  - m_enemy: {fileID: 1307281566364342, guid: fb892a849bf7cf84d8148bf2b8eb9884, type: 2}
+    m_spawnTime: 110
+    m_spawnLocation: {x: 6.75, y: 3.5, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 90}
+    m_enemyBehaviorIndex: 1
+  - m_enemy: {fileID: 1307281566364342, guid: fb892a849bf7cf84d8148bf2b8eb9884, type: 2}
+    m_spawnTime: 112
+    m_spawnLocation: {x: 6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 315}
+    m_enemyBehaviorIndex: 2
+  - m_enemy: {fileID: 1307281566364342, guid: fb892a849bf7cf84d8148bf2b8eb9884, type: 2}
+    m_spawnTime: 112
+    m_spawnLocation: {x: 6.75, y: 1, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 45}
+    m_enemyBehaviorIndex: 3
 --- !u!114 &393352134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,8 +451,8 @@ MonoBehaviour:
   - {fileID: 1494919380543808, guid: 69dd8ebf82a30e04f876e9b05da4ea55, type: 2}
   - {fileID: 1923923889830814, guid: 7c8f8f4d258c6554e84a3cf543b58a4c, type: 2}
   playerShip: {fileID: 0}
-  secondsBetweenPieceDrops: 3
-  secondsUntilVictorie: 60
+  secondsBetweenPieceDrops: 2.5
+  secondsUntilVictorie: 120
   gameOver: 0
   isVictorieuouous: 0
   lockeredMsg: {fileID: 0}
