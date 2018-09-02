@@ -1,3 +1,4 @@
 next:
-make socket pieces all be z = -1
+add public float enemySpeed to EnemyManager enemy struct
+
 

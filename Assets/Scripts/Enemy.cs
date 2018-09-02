@@ -15,6 +15,7 @@ public struct EnemyBehavior
 	public bool m_singleSpreadShot;
 	public bool m_leftShot;
     public bool m_multiSpreadShot;
+    public float m_speed;
 }
 
 public class Enemy : MonoBehaviour {
@@ -24,7 +25,6 @@ public class Enemy : MonoBehaviour {
 	public GameObject[] m_rightCannons;
 	public EnemyBehavior m_enemyBehavior;
 
-	public float m_speed = 1f;
 	public float m_countDown;
     public bool isEvil; // true = enemy, false = player
     
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour {
 				break;
 		}
 
-		transform.Translate(Vector3.up * Time.deltaTime * m_speed);
+		transform.Translate(Vector3.up * Time.deltaTime * m_enemyBehavior.m_speed);
 	}
 
 	IEnumerator Fire(float aDelay)

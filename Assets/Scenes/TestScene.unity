@@ -224,6 +224,7 @@ MonoBehaviour:
     m_singleSpreadShot: 0
     m_leftShot: 0
     m_multiSpreadShot: 0
+    m_speed: 2
   - m_movementMethod: 1
     m_startFiringDelay: 1
     m_cannonDelay: 0.5
@@ -231,6 +232,7 @@ MonoBehaviour:
     m_singleSpreadShot: 0
     m_leftShot: 1
     m_multiSpreadShot: 0
+    m_speed: 1
   - m_movementMethod: 2
     m_startFiringDelay: 1.5
     m_cannonDelay: 0.75
@@ -238,6 +240,7 @@ MonoBehaviour:
     m_singleSpreadShot: 0
     m_leftShot: 0
     m_multiSpreadShot: 0
+    m_speed: 1
   - m_movementMethod: 3
     m_startFiringDelay: 1.25
     m_cannonDelay: 0.75
@@ -245,6 +248,7 @@ MonoBehaviour:
     m_singleSpreadShot: 0
     m_leftShot: 1
     m_multiSpreadShot: 0
+    m_speed: 1
   - m_movementMethod: 4
     m_startFiringDelay: 3
     m_cannonDelay: 0
@@ -252,6 +256,7 @@ MonoBehaviour:
     m_singleSpreadShot: 1
     m_leftShot: 1
     m_multiSpreadShot: 0
+    m_speed: 1
   - m_movementMethod: 4
     m_startFiringDelay: 3
     m_cannonDelay: 0
@@ -259,6 +264,7 @@ MonoBehaviour:
     m_singleSpreadShot: 1
     m_leftShot: 0
     m_multiSpreadShot: 0
+    m_speed: 1
   - m_movementMethod: 5
     m_startFiringDelay: 2.5
     m_cannonDelay: 0
@@ -266,6 +272,7 @@ MonoBehaviour:
     m_singleSpreadShot: 1
     m_leftShot: 0
     m_multiSpreadShot: 0
+    m_speed: 1
   - m_movementMethod: 6
     m_startFiringDelay: 2.5
     m_cannonDelay: 0
@@ -273,6 +280,7 @@ MonoBehaviour:
     m_singleSpreadShot: 1
     m_leftShot: 1
     m_multiSpreadShot: 0
+    m_speed: 1
   m_enemySpawns:
   - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
     m_spawnTime: 3
