@@ -188,6 +188,163 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &393352132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 393352135}
+  - component: {fileID: 393352134}
+  - component: {fileID: 393352133}
+  m_Layer: 0
+  m_Name: GameManagers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &393352133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393352132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba841e4a470e46546b5f1e14260cf032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_enemyTypes:
+  - m_movementMethod: 0
+    m_startFiringDelay: 1
+    m_cannonDelay: 0.5
+    m_firingDelay: 1
+    m_singleSpreadShot: 0
+    m_leftShot: 0
+    m_multiSpreadShot: 0
+  - m_movementMethod: 1
+    m_startFiringDelay: 1
+    m_cannonDelay: 0.5
+    m_firingDelay: 1
+    m_singleSpreadShot: 0
+    m_leftShot: 1
+    m_multiSpreadShot: 0
+  - m_movementMethod: 2
+    m_startFiringDelay: 1.5
+    m_cannonDelay: 0.75
+    m_firingDelay: 0
+    m_singleSpreadShot: 0
+    m_leftShot: 0
+    m_multiSpreadShot: 0
+  - m_movementMethod: 3
+    m_startFiringDelay: 1.25
+    m_cannonDelay: 0.75
+    m_firingDelay: 0
+    m_singleSpreadShot: 0
+    m_leftShot: 1
+    m_multiSpreadShot: 0
+  - m_movementMethod: 4
+    m_startFiringDelay: 3
+    m_cannonDelay: 0
+    m_firingDelay: 1
+    m_singleSpreadShot: 1
+    m_leftShot: 1
+    m_multiSpreadShot: 0
+  - m_movementMethod: 4
+    m_startFiringDelay: 3
+    m_cannonDelay: 0
+    m_firingDelay: 1
+    m_singleSpreadShot: 1
+    m_leftShot: 0
+    m_multiSpreadShot: 0
+  - m_movementMethod: 5
+    m_startFiringDelay: 2.5
+    m_cannonDelay: 0
+    m_firingDelay: 1
+    m_singleSpreadShot: 1
+    m_leftShot: 0
+    m_multiSpreadShot: 0
+  - m_movementMethod: 6
+    m_startFiringDelay: 2.5
+    m_cannonDelay: 0
+    m_firingDelay: 1
+    m_singleSpreadShot: 1
+    m_leftShot: 1
+    m_multiSpreadShot: 0
+  m_enemySpawns:
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 3
+    m_spawnLocation: {x: -6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 270}
+    m_enemyBehaviorIndex: 0
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 12
+    m_spawnLocation: {x: 6.75, y: 3.5, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 90}
+    m_enemyBehaviorIndex: 1
+  - m_enemy: {fileID: 1322236976242268, guid: 1e45247ec4fc0f8459c55a0dfc3a8307, type: 2}
+    m_spawnTime: 28
+    m_spawnLocation: {x: -6.75, y: 0, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 315}
+    m_enemyBehaviorIndex: 2
+  - m_enemy: {fileID: 1322236976242268, guid: 1e45247ec4fc0f8459c55a0dfc3a8307, type: 2}
+    m_spawnTime: 28
+    m_spawnLocation: {x: 6.75, y: 0, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 45}
+    m_enemyBehaviorIndex: 3
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 40
+    m_spawnLocation: {x: -1, y: 6, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 180}
+    m_enemyBehaviorIndex: 4
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 46
+    m_spawnLocation: {x: 1, y: 6, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 180}
+    m_enemyBehaviorIndex: 5
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 52
+    m_spawnLocation: {x: -6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 270}
+    m_enemyBehaviorIndex: 6
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 58
+    m_spawnLocation: {x: 6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 90}
+    m_enemyBehaviorIndex: 7
+--- !u!114 &393352134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393352132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00278608069ea046bbd382d2cd43d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piecePrefabs:
+  - {fileID: 1246096287067676, guid: 846485733915fd848a41458c4826d773, type: 2}
+  - {fileID: 1246096287067676, guid: 7127f081ab209b3419cc6af38439778b, type: 2}
+  - {fileID: 1246096287067676, guid: bdde68b4dccae4d448dcccfbc36bcebb, type: 2}
+  - {fileID: 1246096287067676, guid: 8a0bda8bd3693cb4ebd6d9fe8b2227a7, type: 2}
+  playerShip: {fileID: 0}
+  secondsBetweenPieceDrops: 0
+--- !u!4 &393352135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393352132}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &464878594
 GameObject:
   m_ObjectHideFlags: 0
