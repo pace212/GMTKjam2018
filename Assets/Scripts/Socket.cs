@@ -9,7 +9,7 @@ public class Socket : MonoBehaviour {
     // Socket sort order = 25
     public int highlightInitialSortOrder = 26;
     public int pieceInitialSortOrder = 27;
-    private Vector2 pieceScale = new Vector2(0.5f, 0.5f);
+    private Vector3 pieceScale = new Vector3(0.67f, 0.67f, 0.67f);
     private MainController main;
     private GameObject myHighlight;
 

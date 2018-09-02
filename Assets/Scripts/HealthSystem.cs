@@ -42,20 +42,21 @@ public class HealthSystem : MonoBehaviour {
 
 	IEnumerator DamageVisual()
 	{
-		Color originalColor = m_spriteRender.color;
+        if(m_spriteRender) {
+            Color originalColor = m_spriteRender.color;
 
-		for(int i = 0; i < 10; ++i)
-		{
-			if (i % 2 == 0)
-				m_spriteRender.color = Color.red;
-			else
-				m_spriteRender.color = Color.gray;
+            for(int i = 0; i < 10; ++i)
+            {
+                if (i % 2 == 0)
+                    m_spriteRender.color = Color.red;
+                else
+                    m_spriteRender.color = Color.gray;
 
-			yield return new WaitForSeconds(0.005f * (10f + i));
-		}
+                yield return new WaitForSeconds(0.005f * (10f + i));
+            }
 
-		m_spriteRender.color = originalColor;
-
+            m_spriteRender.color = originalColor;
+        }
 		yield return null;
 	}
 
@@ -64,11 +65,11 @@ public class HealthSystem : MonoBehaviour {
 		if(m_spriteRender != null)
 		{
 			m_spriteRender.color = Color.red;
-//			yield return new WaitForSeconds(m_deathTimer);
-            // actually die
-            Piece piece = this.GetComponent<Piece>();
-            piece.Die();
+			yield return new WaitForSeconds(m_deathTimer);
 		}
+        // actually die
+        Piece piece = this.GetComponent<Piece>();
+        piece.Die();
 
 		yield return null;
 	}
