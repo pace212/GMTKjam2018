@@ -157,6 +157,7 @@ public class Piece : MonoBehaviour {
 
     // I've just been reduced to zero health
     public void Die() {
+        Debug.Log(gameObject + "ship piece " + gameObject + " has broken off");
         main.playerShip.NotePieceDestroyed(this);
     }
     

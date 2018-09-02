@@ -27,6 +27,7 @@ public class HealthSystem : MonoBehaviour {
 
     public void TakeDamage(int aDamage)
     {
+        Debug.Log(gameObject + " took damage, now has " + m_health);
         m_health -= aDamage;
 
 		if(m_health <= 0)
@@ -62,6 +63,7 @@ public class HealthSystem : MonoBehaviour {
 
 	IEnumerator Dead()
 	{
+        Debug.Log(gameObject + " is dead");
 		if(m_spriteRender != null)
 		{
 			m_spriteRender.color = Color.red;

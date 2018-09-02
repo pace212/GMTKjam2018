@@ -105,8 +105,15 @@ public class Ship : MonoBehaviour {
         m_pieces[gridx, gridy] = null;
         piece.isConnectedToHelm = false;
         piece.BreakOff();
+        if(gridx == helmSlot.x && gridy == helmSlot.y) {
+            Die();
+        }
     }
 
+    private void Die() {
+        main.gameOver = true;
+    }
+    
     // Note that a grid slot is currently being dragged from
     public void ReserveGridSlot(Vector3 worldPos3d)
     {
