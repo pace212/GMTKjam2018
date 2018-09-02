@@ -185,19 +185,39 @@ public class Ship : MonoBehaviour {
         }
     }
 
-    // recursive case: mark orthogonal neighbors as connected
+    // recursive case: mark orthogonal neighbors as connected if they have the right connection points
     private void MarkAsConnectedToHelm(Vector2Int gridSlot) {
         Piece piece = GetPieceAt(gridSlot);
         if(piece && !piece.isConnectedToHelm) { // avoid infinite recursion; only mark+recurse if you're not yet marked
             piece.isConnectedToHelm = true;
-            Vector2Int northSlot = new Vector2Int(gridSlot.x, gridSlot.y+1);
-            MarkAsConnectedToHelm(northSlot);
-            Vector2Int southSlot = new Vector2Int(gridSlot.x, gridSlot.y-1);
-            MarkAsConnectedToHelm(southSlot);
-            Vector2Int eastSlot = new Vector2Int(gridSlot.x+1, gridSlot.y);
-            MarkAsConnectedToHelm(eastSlot);
-            Vector2Int westSlot = new Vector2Int(gridSlot.x-1, gridSlot.y);
-            MarkAsConnectedToHelm(westSlot);
+            if(piece.HasNorthConnector()) {
+                Vector2Int northSlot = new Vector2Int(gridSlot.x, gridSlot.y+1);
+                Piece otherPiece = GetPieceAt(northSlot);
+                if(otherPiece != null && otherPiece.HasSouthConnector()) {
+                    MarkAsConnectedToHelm(northSlot);
+                }
+            }
+            if(piece.HasSouthConnector()) {
+                Vector2Int southSlot = new Vector2Int(gridSlot.x, gridSlot.y-1);
+                Piece otherPiece = GetPieceAt(southSlot);
+                if(otherPiece != null && otherPiece.HasNorthConnector()) {
+                    MarkAsConnectedToHelm(southSlot);
+                }
+            }
+            if(piece.HasEastConnector()) {
+                Vector2Int eastSlot = new Vector2Int(gridSlot.x+1, gridSlot.y);
+                Piece otherPiece = GetPieceAt(eastSlot);
+                if(otherPiece != null && otherPiece.HasWestConnector()) {
+                    MarkAsConnectedToHelm(eastSlot);
+                }
+            }
+            if(piece.HasWestConnector()) {
+                Vector2Int westSlot = new Vector2Int(gridSlot.x-1, gridSlot.y);
+                Piece otherPiece = GetPieceAt(westSlot);
+                if(otherPiece != null && otherPiece.HasEastConnector()) {
+                    MarkAsConnectedToHelm(westSlot);
+                }
+            }
         }        
     }
     

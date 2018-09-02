@@ -160,19 +160,19 @@ public class Piece : MonoBehaviour {
         main.playerShip.NotePieceDestroyed(this);
     }
     
-    bool HasNorthConnector() {
+    public bool HasNorthConnector() {
         return connectors[0];
     }
 
-    bool HasSouthConnector() {
+    public bool HasSouthConnector() {
         return connectors[1];
     }
 
-    bool HasEastConnector() {
+    public bool HasEastConnector() {
         return connectors[2];
     }
 
-    bool HasWestConnector() {
+    public bool HasWestConnector() {
         return connectors[3];
     }
 
