@@ -17,8 +17,8 @@ public class Piece : MonoBehaviour {
     public Socket socket;
     public bool isConnectedToHelm = false;
     private bool isDriftingAway = false;
-    public float driftAwaySpeed = 1; // the speed at which broken-off ship parts drift down off the screen
-    private float driftAwayWobble = 0.5f; // how much back-and-forth wobble the ship parts wobble as they drift down off the screen
+    public float driftAwaySpeed = 0; // the speed at which broken-off ship parts drift down off the screen
+    private float driftAwayWobble = 5f; // how much back-and-forth wobble the ship parts wobble as they drift down off the screen
     private Vector2 velocity = new Vector2(0,0);
     public AudioClip attachSound;
     private AudioSource audioSource;
@@ -30,6 +30,7 @@ public class Piece : MonoBehaviour {
 
 	void Start()
 	{
+        driftAwayWobble = 1f;
         GameObject manager = GameObject.Find("GameManagers");
         main = manager.GetComponent<MainController>();
         audioSource = GetComponent<AudioSource>();
@@ -74,9 +75,12 @@ public class Piece : MonoBehaviour {
             transform.position = worldPos2D;
         } 
         if(isDriftingAway) {
-            Vector2 velocity = new Vector2(Random.Range(-driftAwayWobble, driftAwayWobble), -driftAwaySpeed);
+            Vector2 velocity = new Vector2(Random.Range(-driftAwayWobble, driftAwayWobble), Random.Range(-driftAwayWobble, driftAwayWobble));
             transform.position += (Vector3)velocity * Time.deltaTime;
-            transform.localScale *= 0.998f; // yeah, I know this should be dependent on Time.deltaTime, but nothing bad happens if it's not
+            transform.localScale *= 0.992f; // yeah, I know this should be dependent on Time.deltaTime, but nothing bad happens if it's not
+            if(transform.localScale.x < 0.1f) {
+                gameObject.SetActive(false);
+            }
         }
     }
 
