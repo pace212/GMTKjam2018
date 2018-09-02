@@ -164,7 +164,7 @@ public class Piece : MonoBehaviour {
 	public void ShowPotentialLocations(Ship aShip)
 	{
         for(int i = 0; i < Ship.maxGridWidth; i++) {
-            for(int j = 0; j < Ship.maxGridWidth; j++) {
+            for(int j = 0; j < Ship.maxGridHeight; j++) {
                 Vector2Int slot = new Vector2Int(i,j);
                 if(IsValidConnectionSlot(aShip, slot)){
                     aShip.HighlightSlot(slot);

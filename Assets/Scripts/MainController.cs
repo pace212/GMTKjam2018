@@ -6,6 +6,8 @@ public class MainController : MonoBehaviour {
 
 	public GameObject[] piecePrefabs;
     public Ship playerShip;
+    public float secondsBetweenPieceDrops;
+    private float secondsSinceLastPieceDrop = 0;
 
     private AudioSource audioSource;
 
@@ -27,6 +29,18 @@ public class MainController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+        secondsSinceLastPieceDrop += Time.deltaTime;
+        if(secondsSinceLastPieceDrop >= secondsBetweenPieceDrops) {
+            DropNewPiece();
+        }
 	}
+
+    void DropNewPiece () {
+        secondsSinceLastPieceDrop = 0;
+        foreach (Socket socket in FindObjectsOfType<Socket>())
+            if(! socket.m_piece) {
+                socket.InstantiatePiece(RandomPiecePrefab());
+                return;
+            }
+    }
 }

@@ -18,14 +18,7 @@ public class Socket : MonoBehaviour {
         GameObject manager = GameObject.Find("GameManagers");
         main = manager.GetComponent<MainController>();
         if(initialPiecePrefab) {
-            GameObject pieceObj = Instantiate(initialPiecePrefab, transform);
-            pieceObj.transform.localScale = pieceScale;
-            SpriteRenderer sprite = pieceObj.GetComponent<SpriteRenderer>();
-            if (sprite != null) {
-                sprite.sortingOrder = pieceInitialSortOrder;
-            }
-            m_piece = pieceObj.GetComponent<Piece>();
-            m_piece.socket = this;
+            InstantiatePiece(initialPiecePrefab);
         }
 	}
 	
@@ -34,6 +27,17 @@ public class Socket : MonoBehaviour {
 		
 	}
 
+    public void InstantiatePiece(GameObject piecePrefab) {
+        GameObject pieceObj = Instantiate(piecePrefab, transform);
+        pieceObj.transform.localScale = pieceScale;
+        SpriteRenderer sprite = pieceObj.GetComponent<SpriteRenderer>();
+        if (sprite != null) {
+            sprite.sortingOrder = pieceInitialSortOrder;
+        }
+        m_piece = pieceObj.GetComponent<Piece>();
+        m_piece.socket = this;
+    }
+    
     void OnMouseEnter() {
         Highlight();
     }
