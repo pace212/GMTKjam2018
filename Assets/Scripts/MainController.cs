@@ -94,14 +94,14 @@ public class MainController : MonoBehaviour {
                 gameOverStyle.fontSize = 32;
                 gameOverStyle.fontStyle = FontStyle.Bold;
                 gameOverStyle.alignment = TextAnchor.LowerCenter;
-                GUI.Label(new Rect(Screen.width / 2, Screen.height / 2 + 100, 100, 20), "ARRRRRRRRR\nTO RESTART\n(Jake, please fix Restart())", gameOverStyle);
+                GUI.Label(new Rect(Screen.width / 2, Screen.height / 2 + 100, 100, 20), "Press\nARRRRRRRRR\nTO RESTART)", gameOverStyle);
             } else {
                 GUIStyle gameOverStyle = new GUIStyle();
                 gameOverStyle.normal.textColor = Color.red;
                 gameOverStyle.fontSize = 32;
                 gameOverStyle.fontStyle = FontStyle.Bold;
                 gameOverStyle.alignment = TextAnchor.LowerCenter;
-                GUI.Label(new Rect(Screen.width / 2, Screen.height / 2+ 100, 100, 20), "ARRRRRRRRR\nTO RESTART\n(Jake, please fix Restart())", gameOverStyle);
+                GUI.Label(new Rect(Screen.width / 2, Screen.height / 2+ 100, 100, 20), "Press\nARRRRRRRRR\nTO RESTART)", gameOverStyle);
             }
 		}
 	}

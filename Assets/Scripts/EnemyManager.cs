@@ -22,21 +22,12 @@ public class EnemyManager : MonoBehaviour {
 	public List<EnemySpawn> m_enemySpawns;
 
 	float countDown;
+	float startTime;
 
-	void Awake ()
+	void Start()
 	{
-		if(instance == null)
-		{
-			instance = this;
-			DontDestroyOnLoad(gameObject);
-			Init();
-		}
-		else
-		{	Destroy(gameObject);	}
-	}
+		startTime = Time.time;
 
-	private void Init()
-	{
 		if(m_enemySpawns.Count > 0)
 		{	countDown = m_enemySpawns[0].m_spawnTime;	}
 		else
@@ -53,7 +44,7 @@ public class EnemyManager : MonoBehaviour {
 
 			while(enemySpawnLoop)
 			{
-				if(Time.time >= m_enemySpawns[0].m_spawnTime)
+				if(Time.time - startTime >= m_enemySpawns[0].m_spawnTime)
 				{
 					GameObject newEnemy = Instantiate<GameObject>(m_enemySpawns[0].m_enemy,
 						m_enemySpawns[0].m_spawnLocation,
