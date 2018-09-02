@@ -27,8 +27,8 @@ public class HealthSystem : MonoBehaviour {
 
     public void TakeDamage(int aDamage)
     {
-        Debug.Log(gameObject + " took damage, now has " + m_health);
         m_health -= aDamage;
+        Debug.Log(gameObject + " took damage, now has " + m_health);
 
 		if(m_health <= 0)
 		{
