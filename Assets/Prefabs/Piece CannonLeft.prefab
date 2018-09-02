@@ -24,8 +24,24 @@ GameObject:
   - component: {fileID: 61369706572962566}
   - component: {fileID: 114963435774133842}
   - component: {fileID: 82629506228532848}
+  - component: {fileID: 114763055693846018}
   m_Layer: 0
   m_Name: Piece CannonLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1437509701761668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4522080913140706}
+  m_Layer: 0
+  m_Name: LeftCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,10 +56,24 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.01}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4522080913140706}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4522080913140706
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437509701761668}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.01}
+  m_LocalScale: {x: 1.6666682, y: 1.3333346, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4389793794408120}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &61369706572962566
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -164,6 +194,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114763055693846018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1246096287067676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba5f836121a31e4b80df0a048cc8140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bullet: {fileID: 1083424791777266, guid: 1425fe42c06faa3409dde520dc0f3e74, type: 2}
+  m_leftCannons:
+  - {fileID: 1437509701761668}
+  m_rightCannons: []
+  m_enemyBehavior:
+    m_movementMethod: 7
+    m_startFiringDelay: 0
+    m_cannonDelay: 0.7
+    m_firingDelay: 0
+    m_singleSpreadShot: 0
+    m_leftShot: 1
+    m_multiSpreadShot: 1
+  m_speed: 0
+  m_countDown: 0
+  isEvil: 0
 --- !u!114 &114897658707591226
 MonoBehaviour:
   m_ObjectHideFlags: 1

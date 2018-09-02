@@ -292,6 +292,7 @@ MonoBehaviour:
     m_leftShot: 0
   m_speed: 1
   m_countDown: 0
+  isEvil: 1
 --- !u!114 &114935346434934606
 MonoBehaviour:
   m_ObjectHideFlags: 1

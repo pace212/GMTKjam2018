@@ -188,6 +188,7 @@ MonoBehaviour:
     m_leftShot: 0
   m_speed: 1.2
   m_countDown: 0
+  isEvil: 1
 --- !u!212 &212555358398524224
 SpriteRenderer:
   m_ObjectHideFlags: 1

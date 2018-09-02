@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MovementMethod { LeftToRIght, RightToLeft, DiagonalLeftToTopCenter, DiagonalRightToTopCenter, DownAndBack, LeftAndBack, RightAndBack };
+public enum MovementMethod { LeftToRIght, RightToLeft, DiagonalLeftToTopCenter, DiagonalRightToTopCenter, DownAndBack, LeftAndBack, RightAndBack, Stationary};
 
 [System.Serializable]
 public struct EnemyBehavior
@@ -14,6 +14,7 @@ public struct EnemyBehavior
 	public float m_firingDelay;
 	public bool m_singleSpreadShot;
 	public bool m_leftShot;
+    public bool m_multiSpreadShot;
 }
 
 public class Enemy : MonoBehaviour {
@@ -25,7 +26,8 @@ public class Enemy : MonoBehaviour {
 
 	public float m_speed = 1f;
 	public float m_countDown;
-
+    public bool isEvil; // true = enemy, false = player
+    
 	Quaternion startingRotation;
 	Quaternion midRotation;
 	Quaternion endingRotation;
@@ -51,6 +53,8 @@ public class Enemy : MonoBehaviour {
 				midRotation = Quaternion.Euler(Vector3.zero);
 				endingRotation = Quaternion.Euler(transform.eulerAngles + (Vector3.forward * 180));
 				break;
+            case MovementMethod.Stationary: // intentional no-op
+                break;
 		}
 	}
 
@@ -85,7 +89,15 @@ public class Enemy : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(aDelay);
 
-		if (!m_enemyBehavior.m_singleSpreadShot)
+        // if this is a ship piece, wait (yield) until it's attached to the ship
+        Piece piece = GetComponent<Piece>();
+        if(piece) {
+            while(!piece.CanFire()) {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
+		if (!(m_enemyBehavior.m_singleSpreadShot || m_enemyBehavior.m_multiSpreadShot))
 		{
 			if (gameObject != null && gameObject.activeInHierarchy)
 			{
@@ -118,6 +130,9 @@ public class Enemy : MonoBehaviour {
 
 					yield return new WaitForSeconds(m_enemyBehavior.m_cannonDelay);
 				}
+                if(m_enemyBehavior.m_multiSpreadShot) {
+                    StartCoroutine(Fire(m_enemyBehavior.m_firingDelay));
+                }                
 			}
 		}
 

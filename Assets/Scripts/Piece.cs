@@ -128,6 +128,14 @@ public class Piece : MonoBehaviour {
         }
     }
 
+    public bool CanFire() {
+        return AttachedToShip();
+    }
+
+    public bool AttachedToShip() {
+        return gameObject.tag == "Ship";        
+    }
+    
     // I am now attached to the ship
     public void Attach() {
         gameObject.tag = "Ship";

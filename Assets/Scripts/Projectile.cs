@@ -6,6 +6,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
 
 	public float m_speed = 1.5f;
+    public bool isEvil;
 	int m_damage = 1;
 
 	void Update()
@@ -15,7 +16,7 @@ public class Projectile : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Ship")
+		if (isEvil ? collision.gameObject.tag == "Ship" : collision.gameObject.tag == "Enemy")
 		{
 			collision.gameObject.GetComponent<HealthSystem>().TakeDamage(m_damage);
 			Destroy(this.gameObject);
