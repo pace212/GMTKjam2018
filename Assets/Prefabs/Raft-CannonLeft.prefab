@@ -544,7 +544,7 @@ MonoBehaviour:
   m_enemyBehavior:
     m_movementMethod: 7
     m_startFiringDelay: 0
-    m_cannonDelay: 1.5
+    m_cannonDelay: 3.5
     m_firingDelay: 0
     m_singleSpreadShot: 0
     m_leftShot: 1
