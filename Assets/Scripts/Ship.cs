@@ -8,8 +8,8 @@ public class Ship : MonoBehaviour {
     public GameObject helmPrefab;
     public GameObject highlightPrefab;
     public static readonly int maxGridWidth = 7; // must be odd
-    public static readonly int maxGridHeight = 3; // must be odd
-    private Vector2Int gridCenter = new Vector2Int(3, 1);
+    public static readonly int maxGridHeight = 7; // must be odd
+    private Vector2Int gridCenter = new Vector2Int(3, 3);
     private Vector2Int helmSlot = new Vector2Int(3, 1);
 	Piece[,] m_pieces = new Piece[maxGridWidth, maxGridHeight]; // (0,0) is the bottom-leftmost possible ship piece grid coordinate. @todo extend
     GameObject[,] m_highlights = new GameObject[maxGridWidth, maxGridHeight];
