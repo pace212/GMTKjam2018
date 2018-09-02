@@ -81,12 +81,14 @@ public class Piece : MonoBehaviour {
     }
 
     void OnMouseEnter() {
+        // Debug.Log("mouse enter" + " " + socket + " " + isDriftingAway + " " + isBeingDragged);
         if(socket && !isBeingDragged) {
             socket.Highlight();
         }
     }
 
     void OnMouseExit() {
+        // Debug.Log("mouse exit" + " " + socket + " " + isDriftingAway + " " + isBeingDragged);
         if(socket && !isBeingDragged) {
             socket.Unhighlight();
         }
