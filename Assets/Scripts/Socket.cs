@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Socket : MonoBehaviour {
 
+    public GameObject initialPiecePrefab;
     public Piece m_piece;
     // Socket sort order = 25
     public int highlightInitialSortOrder = 26;
@@ -16,15 +17,16 @@ public class Socket : MonoBehaviour {
 	void Start () {
         GameObject manager = GameObject.Find("GameManagers");
         main = manager.GetComponent<MainController>();
-        GameObject piecePrefab = main.RandomPiecePrefab();
-        GameObject pieceObj = Instantiate(piecePrefab, transform);
-        pieceObj.transform.localScale = pieceScale;
-        SpriteRenderer sprite = pieceObj.GetComponent<SpriteRenderer>();
-        if (sprite != null) {
-            sprite.sortingOrder = pieceInitialSortOrder;
+        if(initialPiecePrefab) {
+            GameObject pieceObj = Instantiate(initialPiecePrefab, transform);
+            pieceObj.transform.localScale = pieceScale;
+            SpriteRenderer sprite = pieceObj.GetComponent<SpriteRenderer>();
+            if (sprite != null) {
+                sprite.sortingOrder = pieceInitialSortOrder;
+            }
+            m_piece = pieceObj.GetComponent<Piece>();
+            m_piece.socket = this;
         }
-		m_piece = pieceObj.GetComponent<Piece>();
-        m_piece.socket = this;
 	}
 	
 	// Update is called once per frame
