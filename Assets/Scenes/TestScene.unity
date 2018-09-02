@@ -340,6 +340,7 @@ MonoBehaviour:
   - {fileID: 1923923889830814, guid: 7c8f8f4d258c6554e84a3cf543b58a4c, type: 2}
   playerShip: {fileID: 0}
   secondsBetweenPieceDrops: 3
+  gameOver: 0
 --- !u!4 &393352135
 Transform:
   m_ObjectHideFlags: 0
@@ -524,8 +525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 305, y: 165}
-  m_SizeDelta: {x: 259.92, y: 146.58}
+  m_AnchoredPosition: {x: 400, y: 200}
+  m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &980515693
 MonoBehaviour:
@@ -547,9 +548,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 07d58171bca8bd04591e202a232bf084, type: 3}
     m_FontSize: 60
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 60
