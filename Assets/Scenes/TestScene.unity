@@ -282,42 +282,42 @@ MonoBehaviour:
     m_multiSpreadShot: 0
     m_speed: 1
   m_enemySpawns:
-  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
-    m_spawnTime: 3
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
+    m_spawnTime: 1
     m_spawnLocation: {x: -6.75, y: 2.25, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 270}
     m_enemyBehaviorIndex: 0
-  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
     m_spawnTime: 12
     m_spawnLocation: {x: 6.75, y: 3.5, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 90}
     m_enemyBehaviorIndex: 1
-  - m_enemy: {fileID: 1322236976242268, guid: 1e45247ec4fc0f8459c55a0dfc3a8307, type: 2}
+  - m_enemy: {fileID: 1307281566364342, guid: fb892a849bf7cf84d8148bf2b8eb9884, type: 2}
     m_spawnTime: 28
     m_spawnLocation: {x: -6.75, y: 0, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 315}
     m_enemyBehaviorIndex: 2
-  - m_enemy: {fileID: 1322236976242268, guid: 1e45247ec4fc0f8459c55a0dfc3a8307, type: 2}
+  - m_enemy: {fileID: 1307281566364342, guid: fb892a849bf7cf84d8148bf2b8eb9884, type: 2}
     m_spawnTime: 28
     m_spawnLocation: {x: 6.75, y: 0, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 45}
     m_enemyBehaviorIndex: 3
-  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
     m_spawnTime: 40
     m_spawnLocation: {x: -1, y: 6, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 180}
     m_enemyBehaviorIndex: 4
-  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
     m_spawnTime: 46
     m_spawnLocation: {x: 1, y: 6, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 180}
     m_enemyBehaviorIndex: 5
-  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
     m_spawnTime: 52
     m_spawnLocation: {x: -6.75, y: 2.25, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 270}
     m_enemyBehaviorIndex: 6
-  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+  - m_enemy: {fileID: 1307281566364342, guid: 92968b76b54199443a5d280b17b4963f, type: 2}
     m_spawnTime: 58
     m_spawnLocation: {x: 6.75, y: 2.25, z: 0}
     m_eulerRotation: {x: 0, y: 0, z: 90}
@@ -548,7 +548,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 07d58171bca8bd04591e202a232bf084, type: 3}
+    m_Font: {fileID: 12800000, guid: 6091a2306ef590848ad87b780dfa20b4, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
