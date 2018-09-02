@@ -68,6 +68,7 @@ public class MainController : MonoBehaviour {
         gameOver = true;
         isVictorieuouous = true;
         victorieMsg.SetActive(true);
+        playerShip.ReplaceHelmWithSail();
     }
 
     public void Lose() {

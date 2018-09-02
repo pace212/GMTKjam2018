@@ -161,7 +161,45 @@ public class Piece : MonoBehaviour {
         if(audioSource) {
             audioSource.PlayOneShot(breakSound,2);
         }
-    }        
+    }
+
+    public void NoteConnectorStatus(string cardinalDirection, bool isValid) {
+        if(isValid) {
+            NoteConnectorAttached(cardinalDirection);
+        } else {
+            DisableConnector(cardinalDirection);
+        }
+    }
+    
+    private void DisableConnector(string cardinalDirection) {
+        Transform connectorTrans = transform.Find(cardinalDirection);
+        if(connectorTrans) {
+            SpriteRenderer sr = connectorTrans.gameObject.GetComponent<SpriteRenderer>();
+            if(sr) {
+                sr.color = Color.black;
+            }
+        }
+    }
+
+    private void NoteConnectorAttached(string cardinalDirection) {
+        Transform connectorTrans = transform.Find(cardinalDirection);
+        if(connectorTrans) {
+            SpriteRenderer sr = connectorTrans.gameObject.GetComponent<SpriteRenderer>();
+            if(sr) {
+                sr.color = Color.white;
+            }
+        }
+    }
+
+    public void NoteConnectorAvailable(string cardinalDirection) {
+        Transform connectorTrans = transform.Find(cardinalDirection);
+        if(connectorTrans) {
+            SpriteRenderer sr = connectorTrans.gameObject.GetComponent<SpriteRenderer>();
+            if(sr) {
+                sr.color = new Color(0.01f, 0.64f, 0.06f, 1);
+            }
+        }
+    }
 
     // I've just been reduced to zero health
     public void Die() {

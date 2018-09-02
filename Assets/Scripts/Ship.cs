@@ -18,6 +18,8 @@ public class Ship : MonoBehaviour {
     public float pieceHeightInUnits;
     private Vector2 pieceSize;
     private Vector2Int reservedGridSlot = new Vector2Int(-1, -1); // (-1,-1) indicates no grid slot is currently reserved
+    public GameObject sailPrefab;
+    private bool sailingAway = false;
 
     private MainController main;
 	// Vector2 centerPosition = new Vector2(0f, -2.5f);
@@ -36,7 +38,7 @@ public class Ship : MonoBehaviour {
         Vector3 helmRelativePosition = PiecePosition(helmSlot) + gameObject.transform.position;
         GameObject helmPieceObj = Instantiate(helmPrefab, helmRelativePosition, Quaternion.identity, transform);
         MakePiecePartOfMe(helmPieceObj.GetComponent<Piece>(), helmSlot);
-    
+
         /* uncomment to fill the ship up with random pieces for testing
         for(int i = 0; i < maxGridWidth; i++) {
             for(int j = 0; j < maxGridHeight; j++) {
@@ -51,6 +53,12 @@ public class Ship : MonoBehaviour {
         */
 	}
 
+    void Update() {
+        if(sailingAway) {
+            transform.position += new Vector3(-0.1f, 0.5f, 0) * Time.deltaTime;
+        }
+    }
+    
     // given a ship grid position, compute the spatial (x,y) coordinates of the corresponding ship piece
     // relative to the ship's center position
     public Vector3 PiecePosition(int gridx, int gridy) {
@@ -84,6 +92,16 @@ public class Ship : MonoBehaviour {
         } else return false; // outside the max bounds of the ship
     }
 
+    public void ReplaceHelmWithSail() {
+        Vector3 relativePosition = PiecePosition(helmSlot.x,helmSlot.y) + gameObject.transform.position;
+        GameObject sailObj = Instantiate(sailPrefab, relativePosition, Quaternion.identity, transform);
+    //MakePiecePartOfMe(piece, slot);
+        sailObj.transform.SetParent(this.transform);
+        sailObj.transform.position = gameObject.transform.position;
+        SnapToGridSlot(sailObj.GetComponent<Piece>(), helmSlot);
+        sailingAway = true;
+    }
+
     public void NotePieceDestroyed(Piece piece) {
         Vector2Int gridSlot = PieceGridSlot(piece);
         MakePieceNotPartOfMe(gridSlot.x, gridSlot.y);
@@ -98,6 +116,38 @@ public class Ship : MonoBehaviour {
             piece.socket = null;
         }
         piece.isConnectedToHelm = true;
+        if(piece.HasNorthConnector()) {
+            Vector2Int northSlot = new Vector2Int(gridSlot.x, gridSlot.y+1);
+            Piece otherPiece = GetPieceAt(northSlot);
+            if(otherPiece != null) {
+                piece.NoteConnectorStatus("North", otherPiece.HasSouthConnector());
+                otherPiece.NoteConnectorStatus("South", otherPiece.HasSouthConnector());
+            }
+        }
+        if(piece.HasSouthConnector()) {
+            Vector2Int southSlot = new Vector2Int(gridSlot.x, gridSlot.y-1);
+            Piece otherPiece = GetPieceAt(southSlot);
+            if(otherPiece != null ) {
+                piece.NoteConnectorStatus("South", otherPiece.HasNorthConnector());
+                otherPiece.NoteConnectorStatus("North", otherPiece.HasNorthConnector());
+            }
+        }
+        if(piece.HasEastConnector()) {
+            Vector2Int eastSlot = new Vector2Int(gridSlot.x+1, gridSlot.y);
+            Piece otherPiece = GetPieceAt(eastSlot);
+            if(otherPiece != null) {
+                piece.NoteConnectorStatus("East", otherPiece.HasWestConnector());
+                otherPiece.NoteConnectorStatus("West", otherPiece.HasWestConnector());
+            }
+        }
+        if(piece.HasWestConnector()) {
+            Vector2Int westSlot = new Vector2Int(gridSlot.x-1, gridSlot.y);
+            Piece otherPiece = GetPieceAt(westSlot);
+            if(otherPiece != null) {
+                piece.NoteConnectorStatus("West", otherPiece.HasEastConnector());
+                otherPiece.NoteConnectorStatus("East", otherPiece.HasEastConnector());
+            }
+        }
     }
 
     private void MakePieceNotPartOfMe(int gridx, int gridy) {
@@ -107,6 +157,19 @@ public class Ship : MonoBehaviour {
         piece.BreakOff();
         if(gridx == helmSlot.x && gridy == helmSlot.y) {
             Die();
+        } else {
+            Vector2Int northSlot = new Vector2Int(gridx, gridy+1);
+            Piece otherPiece = GetPieceAt(northSlot);
+            if(otherPiece) otherPiece.NoteConnectorAvailable("South");
+            Vector2Int southSlot = new Vector2Int(gridx, gridy-1);
+            otherPiece = GetPieceAt(southSlot);
+            if(otherPiece) otherPiece.NoteConnectorAvailable("North");
+            Vector2Int eastSlot = new Vector2Int(gridx+1, gridy);
+            otherPiece = GetPieceAt(eastSlot);
+            if(otherPiece) otherPiece.NoteConnectorAvailable("West");
+            Vector2Int westSlot = new Vector2Int(gridx-1, gridy);
+            otherPiece = GetPieceAt(westSlot);
+            if(otherPiece) otherPiece.NoteConnectorAvailable("East");
         }
     }
 

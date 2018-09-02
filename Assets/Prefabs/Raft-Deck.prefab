@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4766718996782040}
   - component: {fileID: 212627404704320726}
   m_Layer: 0
-  m_Name: Connection_Point_Indicator
+  m_Name: West
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 114406964865916774}
   - component: {fileID: 114311012729662582}
   m_Layer: 0
-  m_Name: Connection_Point_Indicator (3)
+  m_Name: North
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 114869962989018680}
   - component: {fileID: 114795438578655094}
   m_Layer: 0
-  m_Name: Connection_Point_Indicator (1)
+  m_Name: East
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 114299881876620566}
   - component: {fileID: 114820594161700902}
   m_Layer: 0
-  m_Name: Connection_Point_Indicator (2)
+  m_Name: South
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,7 +261,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1269902947743412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.0014426708, z: -0.5}
+  m_LocalPosition: {x: -0.5, y: 0, z: -0.5}
   m_LocalScale: {x: 0.26999998, y: 0.26999998, z: 1}
   m_Children:
   - {fileID: 4179517395092482}

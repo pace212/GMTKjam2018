@@ -1295,6 +1295,7 @@ MonoBehaviour:
     type: 2}
   pieceWidthInUnits: 1.4
   pieceHeightInUnits: 1.2
+  sailPrefab: {fileID: 1035126672954734, guid: a053ca07c5aaa55428e0ca155ff768e6, type: 2}
 --- !u!1 &1612448645
 GameObject:
   m_ObjectHideFlags: 0
