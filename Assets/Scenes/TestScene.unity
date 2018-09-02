@@ -687,6 +687,7 @@ MonoBehaviour:
   - {fileID: 1246096287067676, guid: bdde68b4dccae4d448dcccfbc36bcebb, type: 2}
   - {fileID: 1246096287067676, guid: 8a0bda8bd3693cb4ebd6d9fe8b2227a7, type: 2}
   playerShip: {fileID: 0}
+  secondsBetweenPieceDrops: 0
 --- !u!114 &1556893094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,15 +701,94 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyTypes:
   - m_movementMethod: 0
-    m_startFiringDelay: 0
+    m_startFiringDelay: 1
+    m_cannonDelay: 0.5
+    m_firingDelay: 1
+    m_singleSpreadShot: 0
+    m_leftShot: 0
+  - m_movementMethod: 1
+    m_startFiringDelay: 1
+    m_cannonDelay: 0.5
+    m_firingDelay: 1
+    m_singleSpreadShot: 0
+    m_leftShot: 1
+  - m_movementMethod: 2
+    m_startFiringDelay: 1.5
+    m_cannonDelay: 0.75
+    m_firingDelay: 0
+    m_singleSpreadShot: 0
+    m_leftShot: 0
+  - m_movementMethod: 3
+    m_startFiringDelay: 1.25
+    m_cannonDelay: 0.75
+    m_firingDelay: 0
+    m_singleSpreadShot: 0
+    m_leftShot: 1
+  - m_movementMethod: 4
+    m_startFiringDelay: 3
     m_cannonDelay: 0
     m_firingDelay: 1
+    m_singleSpreadShot: 1
+    m_leftShot: 1
+  - m_movementMethod: 4
+    m_startFiringDelay: 3
+    m_cannonDelay: 0
+    m_firingDelay: 1
+    m_singleSpreadShot: 1
+    m_leftShot: 0
+  - m_movementMethod: 5
+    m_startFiringDelay: 2.5
+    m_cannonDelay: 0
+    m_firingDelay: 1
+    m_singleSpreadShot: 1
+    m_leftShot: 0
+  - m_movementMethod: 6
+    m_startFiringDelay: 2.5
+    m_cannonDelay: 0
+    m_firingDelay: 1
+    m_singleSpreadShot: 1
+    m_leftShot: 1
   m_enemySpawns:
   - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
-    m_spawnTime: 1
-    m_spawnLocation: {x: -6.5, y: 3.5, z: 0}
-    m_eulerRotation: {x: 0, y: 0, z: 0}
+    m_spawnTime: 3
+    m_spawnLocation: {x: -6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 270}
     m_enemyBehaviorIndex: 0
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 12
+    m_spawnLocation: {x: 6.75, y: 3.5, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 90}
+    m_enemyBehaviorIndex: 1
+  - m_enemy: {fileID: 1322236976242268, guid: 1e45247ec4fc0f8459c55a0dfc3a8307, type: 2}
+    m_spawnTime: 28
+    m_spawnLocation: {x: -6.75, y: 0, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 315}
+    m_enemyBehaviorIndex: 2
+  - m_enemy: {fileID: 1322236976242268, guid: 1e45247ec4fc0f8459c55a0dfc3a8307, type: 2}
+    m_spawnTime: 28
+    m_spawnLocation: {x: 6.75, y: 0, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 45}
+    m_enemyBehaviorIndex: 3
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 40
+    m_spawnLocation: {x: -1, y: 6, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 180}
+    m_enemyBehaviorIndex: 4
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 46
+    m_spawnLocation: {x: 1, y: 6, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 180}
+    m_enemyBehaviorIndex: 5
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 52
+    m_spawnLocation: {x: -6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 270}
+    m_enemyBehaviorIndex: 6
+  - m_enemy: {fileID: 1685608034610720, guid: 537196415fbcae842a9f7fa43082ca84, type: 2}
+    m_spawnTime: 58
+    m_spawnLocation: {x: 6.75, y: 2.25, z: 0}
+    m_eulerRotation: {x: 0, y: 0, z: 90}
+    m_enemyBehaviorIndex: 7
 --- !u!1 &1612448645
 GameObject:
   m_ObjectHideFlags: 0

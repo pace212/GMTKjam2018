@@ -70,7 +70,7 @@ public class EnemyManager : MonoBehaviour {
 			}
 
 			if (m_enemySpawns.Count > 0)
-			{ countDown = m_enemySpawns[0].m_spawnTime; }
+			{ countDown = m_enemySpawns[0].m_spawnTime - Time.time; }
 			else
 			{ countDown = 999f; }
 		}

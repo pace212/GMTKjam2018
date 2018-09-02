@@ -10,8 +10,6 @@ public class Projectile : MonoBehaviour {
 
 	void Update()
 	{
-
-
 		transform.Translate(Vector3.up * Time.deltaTime * m_speed);
 	}
 
