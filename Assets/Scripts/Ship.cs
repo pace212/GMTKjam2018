@@ -111,7 +111,7 @@ public class Ship : MonoBehaviour {
     }
 
     private void Die() {
-        main.gameOver = true;
+        main.Lose();
     }
     
     // Note that a grid slot is currently being dragged from

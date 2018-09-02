@@ -13,6 +13,7 @@ public class MainController : MonoBehaviour {
     public bool isVictorieuouous = false;
 
     private GameObject victorieMsg;
+    public GameObject lockeredMsg;
     private float secondsSinceLastPieceDrop = 0;
     private AudioSource audioSource;
 
@@ -21,6 +22,8 @@ public class MainController : MonoBehaviour {
         gameOver = false;
         victorieMsg = GameObject.Find("Victorie");
         victorieMsg.SetActive(false);
+        lockeredMsg = GameObject.Find("Lockered");
+        lockeredMsg.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         GameObject playerShipObj = GameObject.Find("PlayerShip");
         playerShip = playerShipObj.GetComponent<Ship>();
@@ -52,7 +55,7 @@ public class MainController : MonoBehaviour {
             if(secondsSinceLastPieceDrop >= secondsBetweenPieceDrops) {
                 DropNewPiece();
             }
-}
+        }
 	}
 
     void Restart() {
@@ -63,6 +66,12 @@ public class MainController : MonoBehaviour {
         gameOver = true;
         isVictorieuouous = true;
         victorieMsg.SetActive(true);
+    }
+
+    public void Lose() {
+        gameOver = true;
+        isVictorieuouous = false;
+        lockeredMsg.SetActive(true);
     }
     
     void DropNewPiece () {
@@ -86,10 +95,10 @@ public class MainController : MonoBehaviour {
             } else {
                 GUIStyle gameOverStyle = new GUIStyle();
                 gameOverStyle.normal.textColor = Color.red;
-                gameOverStyle.fontSize = 64;
+                gameOverStyle.fontSize = 32;
                 gameOverStyle.fontStyle = FontStyle.Bold;
                 gameOverStyle.alignment = TextAnchor.LowerCenter;
-                GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 20), "ARRRRRRRRR\nTO RESTART\n(Jake, please fix Restart())", gameOverStyle);
+                GUI.Label(new Rect(Screen.width / 2, Screen.height / 2+ 100, 100, 20), "ARRRRRRRRR\nTO RESTART\n(Jake, please fix Restart())", gameOverStyle);
             }
 		}
 	}
