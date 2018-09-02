@@ -146,6 +146,11 @@ public class Piece : MonoBehaviour {
             socket.Unhighlight();
         }
     }        
+
+    // I've just been reduced to zero health
+    public void Die() {
+        main.playerShip.NotePieceDestroyed(this);
+    }
     
     bool HasNorthConnector() {
         return connectors[0];

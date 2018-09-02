@@ -84,6 +84,12 @@ public class Ship : MonoBehaviour {
         } else return false; // outside the max bounds of the ship
     }
 
+    public void NotePieceDestroyed(Piece piece) {
+        Vector2Int gridSlot = PieceGridSlot(piece);
+        MakePieceNotPartOfMe(gridSlot.x, gridSlot.y);
+        BreakOffAnythingNotConnectedToHelm();
+    }
+    
     public void MakePiecePartOfMe(Piece piece, Vector2Int gridSlot) {
         m_pieces[gridSlot.x, gridSlot.y] = piece;
         piece.Attach();
@@ -142,6 +148,19 @@ public class Ship : MonoBehaviour {
     }
     public Piece GetPieceAt (Vector2Int slot) {
         return GetPieceAt(slot.x, slot.y);
+    }
+
+    public Vector2Int PieceGridSlot(Piece piece) {
+        for(int i = 0; i < maxGridWidth; i++) {
+            for(int j = 0; j < maxGridHeight; j++) {
+                Piece candidatePiece = GetPieceAt(i,j);
+                if(candidatePiece && candidatePiece == piece) {
+                    return new Vector2Int(i,j);
+                }
+            }
+        }
+        Debug.LogError("Could not find grid slot for " + piece);
+        return new Vector2Int(-1,-1); // indicates invalid grid slot
     }
 
     public void BreakOffAnythingNotConnectedToHelm() {

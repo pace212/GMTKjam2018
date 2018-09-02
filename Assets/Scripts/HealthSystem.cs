@@ -64,10 +64,10 @@ public class HealthSystem : MonoBehaviour {
 		if(m_spriteRender != null)
 		{
 			m_spriteRender.color = Color.red;
-
-			yield return new WaitForSeconds(m_deathTimer);
-
-			Destroy(this.gameObject);
+//			yield return new WaitForSeconds(m_deathTimer);
+            // actually die
+            Piece piece = this.GetComponent<Piece>();
+            piece.Die();
 		}
 
 		yield return null;
