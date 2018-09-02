@@ -69,8 +69,14 @@ public class HealthSystem : MonoBehaviour {
 		}
         // actually die
         Piece piece = this.GetComponent<Piece>();
-        piece.Die();
-
+        if(piece) {
+            piece.Die();
+        } else {
+            Enemy enemy = this.GetComponent<Enemy>();
+            if(enemy){
+                enemy.Die();
+            }
+        }
 		yield return null;
 	}
 }

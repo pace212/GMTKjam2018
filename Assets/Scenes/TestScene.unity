@@ -392,7 +392,7 @@ Prefab:
         type: 2}
       propertyPath: initialPiecePrefab
       value: 
-      objectReference: {fileID: 1923923889830814, guid: 7c8f8f4d258c6554e84a3cf543b58a4c,
+      objectReference: {fileID: 1494919380543808, guid: 69dd8ebf82a30e04f876e9b05da4ea55,
         type: 2}
     - target: {fileID: 4388618733766550, guid: 31656e8b52cdd4e4a8bd05a9907066ea, type: 2}
       propertyPath: m_LocalPosition.x

@@ -1,2 +1,3 @@
 next:
-sound effects (currently they are all silent, but they will be ready for you, Chloe)
+make socket pieces all be z = -1
+

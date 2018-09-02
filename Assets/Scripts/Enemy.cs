@@ -106,6 +106,9 @@ public class Enemy : MonoBehaviour {
 					GameObject newBullet = Instantiate<GameObject>(m_bullet,
 						(m_enemyBehavior.m_leftShot ? m_leftCannons : m_rightCannons)[i].transform.position,
 						(m_enemyBehavior.m_leftShot ? m_leftCannons : m_rightCannons)[i].transform.rotation);
+                    if(!isEvil) { // rotate player's cannon fire northward a bit
+                        newBullet.transform.rotation = Quaternion.identity;
+                    }
 
 					yield return new WaitForSeconds(m_enemyBehavior.m_cannonDelay);
 				}
@@ -139,6 +142,14 @@ public class Enemy : MonoBehaviour {
 		yield return null;
 	}
 
+    // I've just been reduced to zero health
+    public void Die() {
+        if(isEvil) {
+			Destroy(this.gameObject); // @todo do better
+        }
+        // non-evil dying is handled in HealthSystem
+    }
+    
 	public void OnTriggerExit2D(Collider2D collision)
 	{
 		if(collision.gameObject.tag == "Background")

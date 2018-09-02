@@ -30,6 +30,8 @@ public class Socket : MonoBehaviour {
     public void InstantiatePiece(GameObject piecePrefab) {
         GameObject pieceObj = Instantiate(piecePrefab, transform);
         pieceObj.transform.localScale = pieceScale;
+        Vector3 piecePosition = pieceObj.transform.position;
+        pieceObj.transform.position = new Vector3(piecePosition.x, piecePosition.y, -1); // hack to work around the "can't click on piece" bug
         SpriteRenderer sprite = pieceObj.GetComponent<SpriteRenderer>();
         if (sprite != null) {
             sprite.sortingOrder = pieceInitialSortOrder;
