@@ -27,6 +27,10 @@ public class Enemy : MonoBehaviour {
 
 	public float m_countDown;
     public bool isEvil; // true = enemy, false = player
+    public AudioClip fireSound;
+    public float fireSoundVolume;
+    public AudioClip deathSound;
+    public float deathSoundVolume;
     
 	Quaternion startingRotation;
 	Quaternion midRotation;
@@ -97,6 +101,11 @@ public class Enemy : MonoBehaviour {
             }
         }
 
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if(audioSource) {
+            audioSource.PlayOneShot(fireSound, fireSoundVolume);
+        }
+        
 		if (!(m_enemyBehavior.m_singleSpreadShot || m_enemyBehavior.m_multiSpreadShot))
 		{
 			if (gameObject != null && gameObject.activeInHierarchy)
@@ -144,6 +153,10 @@ public class Enemy : MonoBehaviour {
 
     // I've just been reduced to zero health
     public void Die() {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if(audioSource) {
+            audioSource.PlayOneShot(deathSound, deathSoundVolume);
+        }
         if(isEvil) {
 			Destroy(this.gameObject); // @todo do better
         }

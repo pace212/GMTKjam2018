@@ -524,6 +524,8 @@ MonoBehaviour:
   isConnectedToHelm: 0
   driftAwaySpeed: 0
   attachSound: {fileID: 8300000, guid: 77a96a1f3b3520f4d93114b9d4d28b4f, type: 3}
+  breakSound: {fileID: 8300000, guid: 80f3723bd20ed804fb736004dc170277, type: 3}
+  audioSource: {fileID: 0}
 --- !u!114 &114791532116648708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -550,6 +552,10 @@ MonoBehaviour:
     m_speed: 0
   m_countDown: 0
   isEvil: 0
+  fireSound: {fileID: 8300000, guid: a4bf78fd43f725449a57df479d03d0fb, type: 3}
+  fireSoundVolume: 0.25
+  deathSound: {fileID: 0}
+  deathSoundVolume: 0
 --- !u!212 &212315478524925156
 SpriteRenderer:
   m_ObjectHideFlags: 1

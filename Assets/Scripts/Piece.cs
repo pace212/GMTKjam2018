@@ -21,7 +21,8 @@ public class Piece : MonoBehaviour {
     private float driftAwayWobble = 5f; // how much back-and-forth wobble the ship parts wobble as they drift down off the screen
     private Vector2 velocity = new Vector2(0,0);
     public AudioClip attachSound;
-    private AudioSource audioSource;
+    public AudioClip breakSound;
+    public AudioSource audioSource;
     
     // constructor: a new specific type of ship piece
     public Piece(PieceType type) {
@@ -144,7 +145,7 @@ public class Piece : MonoBehaviour {
     public void Attach() {
         gameObject.tag = "Ship";
         if(audioSource) {
-            audioSource.PlayOneShot(attachSound);
+            audioSource.PlayOneShot(attachSound,2);
         }
     }
     
@@ -156,6 +157,9 @@ public class Piece : MonoBehaviour {
         isBeingDragged = false;
         if(socket != null) {
             socket.Unhighlight();
+        }
+        if(audioSource) {
+            audioSource.PlayOneShot(breakSound,2);
         }
     }        
 

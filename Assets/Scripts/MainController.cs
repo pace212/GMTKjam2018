@@ -14,6 +14,8 @@ public class MainController : MonoBehaviour {
 
     private GameObject victorieMsg;
     public GameObject lockeredMsg;
+    public AudioClip loseSound;
+    public float loseSoundVolume;
     private float secondsSinceLastPieceDrop = 0;
     private AudioSource audioSource;
 
@@ -72,6 +74,7 @@ public class MainController : MonoBehaviour {
         gameOver = true;
         isVictorieuouous = false;
         lockeredMsg.SetActive(true);
+        audioSource.PlayOneShot(loseSound, loseSoundVolume);
     }
     
     void DropNewPiece () {
