@@ -267,6 +267,7 @@ public class Ship : MonoBehaviour {
         Vector2 offset = offsetToOrigin + slotOffset + pieceSizeOffset;
         // Debug.Log("SnapToGridSlot: " + slot + " " + offset + " " + transform.localScale + " " + offsetToOrigin + " " + slotOffset + " " + pieceSizeOffset + " ");
         piece.transform.localPosition = offset / transform.localScale;
+		piece.transform.position = new Vector3(piece.transform.position.x, piece.transform.position.y, 0);
     }
 
 }
